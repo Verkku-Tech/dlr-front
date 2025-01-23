@@ -1,0 +1,194 @@
+{
+    "category": {
+      "Mobile Devices": "Mobile Devices",
+      "Audio": "Audio",
+      "Laptops": "Laptops",
+      "Gaming": "Gaming",
+      "Connectivity": "Connectivity",
+      "Smartphones": "SmartPhones",
+      "SmartWatches": "SmartWatches",
+      "Wallets": "Wallets",
+      "Tablets": "Tablets",
+      "Speakers": "Speakers",
+      "Headphones": "Headphones"
+    },
+    "checkout": {
+      "BillingDetails": "Billing Details",
+      "Summary": "Order Summary",
+      "name":"Name",
+      "lastName":"Last Name",
+      "email":"Email",
+      "phone":"Phone Number",
+      "street":"Street Address",
+      "city":"City",
+      "state": "State",
+      "zip":"Postal Code",
+      "region":"Country",
+      "notes":"Order Additional Notes",
+      "company":"Company Name (Optional)",
+      "products": "Products",
+      "shipping": "Shipping",
+      "placeOrder": "Place Order"
+    },
+    "offcanvas": {
+        "allCategories": "All Categories",
+        "viewProfile": "View Profile",
+        "logout": "Logout",
+        "login": "Login"
+    },
+    "menu": {
+        "SpecialOfferts": "Special Offerts",
+        "AboutDLR": "About DLR",
+        "FAQ": "FAQ",
+        "Contact": "Contact",
+        "MobileDevices": "Mobile Devices",
+        "Audio": "Audio",
+        "Laptops": "Laptops",
+        "Gaming": "Gaming",
+        "Connectivity": "Connectivity"
+    },
+    "cart": {
+        "cart": "Cart",
+        "viewCart": "View Cart",
+        "checkout": "Checkout",
+        "add": "Add to cart",
+        "seeCart": "See the cart",
+        "seeDetail": "See details"
+    },
+    "home": {
+        "hero": {
+            "title": "Get exclusive offers on our web",
+            "subtitle": "Buy through our web page and get special discounts on the selected devices"
+        }
+    },
+    "idealProduct": {
+        "title": "Find your ideal product",
+        "smartPhones": "SmartPhones",
+        "smartWatches": "SmartWatches",
+        "headphones": "Headphones",
+        "laptops": "Laptops",
+        "wallets": "Wallets",
+        "gaming": "Gaming",
+        "tablets": "Tablets",
+        "connectivity": "Connectivity",
+        "devices": "Devices",
+        "audio": "Audio"
+    },
+    "collection": {
+        "title": "Find your ideal product",
+        "varietyIn": "Variety in",
+        "devices": "Devices",
+        "mobiles": "mobiles",
+        "fallInLoveWith": "Fall in love with",
+        "surround": "Sound",
+        "sound": "Surrounding",
+        "findYours": "Find yours"
+    },
+    "newProducts": {
+      "upTo": "Up to",
+      "title": "The newest in DLR",
+      "discount": "Off",
+      "new": "New",
+      "soldOut": "Sold Out",
+      "smartPhones": "SmartPhones",
+      "smartWatches": "SmartWatches",
+      "headphones": "Headphones",
+      "laptops": "Laptops",
+      "wallets": "Wallets",
+      "gaming": "Gaming",
+      "tablets": "Tablets",
+      "connectivity": "Connectivity",
+      "all": "All",
+      "audio": "Audio",
+      "showMore": "See more",
+      "banner": {
+        "title": "At DLR®Tech",
+        "subtitleOne": "find your",
+        "subtitleTwo": "ideal technology"
+      },
+      "brands": {
+        "title": "Deals on top brands",
+        "subtitleOne": "Enjoy up to a",
+        "subtitleTwo": "15% off",
+        "subtitleThree": "on brands"
+      }
+    },
+    "featuredProducts": {
+      "title": "Featured Products",
+      "pictures": {
+        "title": "Discover the",
+        "subtitle": "best deals",
+        "featured": "Featured"
+      }
+    },
+    "choiceYourTeam": {
+      "samsungDevices": "SAMSUNG devices",  
+      "appleDevices": "APPLE devices"
+    },
+    "promotions": {
+      "titleOne": "Be one of the first to find out",
+      "titleTwo": "about our promotions!",
+      "subscribe": "Subscribe",
+      "subtitleOne": "And receive up to a",
+      "discount": "30% off",
+      "subtitleTwo": "on our",
+      "subtitleThree": "selected products."
+    },
+    "subscriptions": {
+      "name": "Name",
+      "lastName": "Last Name",
+      "phoneNumber": "Phone Number",
+      "email": "Email",
+      "subscribe" : "Subscribe"
+  },
+  "footer": {
+    "socialMedia": "Social Media",
+    "contacts": "Contacts",
+    "contactUsBy": "Contact us by",
+    "callUs": "Call us:",
+    "us": "About Us",
+    "clientAssistant": "Customer Service",
+    "faqAndHelp": "FAQ and Help",
+    "shipmentAndDelivery": "Shipping and Delivery",
+    "changesAndReturns": "Exchanges and Returns",
+    "information": "Information",
+    "rightsAndPrivacy": "Privacy Policy",
+    "rightsAndConditions": "Terms and Conditions",
+    "refundPolicy": "Refund Policy",
+    "rightsReserved": "All Rights Reserved",
+    "supportCenter": "Support Center",
+    "aboutUs": "About Us",
+    "ourLocation": "Our Location"
+},
+    "search": {
+      "title": "Search...",
+      "sort": {
+        "default": "Default sorting",
+        "newest": "Sort by newest",
+        "priceLow": "Price: Low to High",
+        "priceHigh": "Price: High to Low",
+        "onSale": "On Sale",
+        "category": "By Category",
+        "newArrivals": "New Arrivals"
+      },
+      "filters": {
+        "show": "Show Filters",
+        "hide": "Hide Filters",
+        "price": "Price Filter",
+        "status": "Product Status",
+        "categories": "Categories",
+        "brands": "Popular Brands",
+        "reset": "Reset Filters"
+      },
+      "results": {
+        "showing": "Showing {{start}}–{{end}} of {{total}} results"
+      },
+      "empty": {
+        "title": "Sorry! Couldn't find the product you were looking For!!!",
+        "message": "Please check if you have misspelt something or try searching with other words.",
+        "imageAlt": "Empty cart image",
+        "continueShopping": "Continue Shopping"
+      }
+    }
+}
+

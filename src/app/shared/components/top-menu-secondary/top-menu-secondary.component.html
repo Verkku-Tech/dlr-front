@@ -1,0 +1,24 @@
+<ul>
+    <li class="border_animated" *ngFor="let item of menu_data; let i = index" 
+    [ngClass]="{'has-dropdown': item.drop_down, 'has-dropdown has-mega-menu': item.mega_menu}">
+      <a [routerLink]="['/search']" [queryParams]="{category: item.id}">{{ item.title | translate }}</a>
+        
+      <ul *ngIf="item.product_menus" class="tp-submenu tp-mega-menu mega-menu-style-2">
+        <li *ngFor="let prd_m of item.product_menus; let i = index" class="has-dropdown">
+          <a [routerLink]="['/']" class="mega-menu-title">Shop Page</a>
+          <ul class="tp-submenu">
+            <li *ngFor="let prd_sm of prd_m.dropdown_menus; let i = index">
+              <a [routerLink]="['/']">{{ prd_sm.title }}</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+  
+      <ul *ngIf="item.drop_down" class="tp-submenu">
+        <li *ngFor="let drop_m of item.dropdown_menus; let i = index">
+          <a [routerLink]="['/']">{{ drop_m.title }}</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  

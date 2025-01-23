@@ -1,0 +1,24 @@
+<div class="tp-shop-widget-content">
+  <div class="tp-shop-widget-categories">
+    <ul>
+      <li *ngFor="let category of categoryData">
+        <a
+          (click)="handleCategoryRoute(category.name)"
+          [ngClass]="{
+            'cursor-pointer': true,
+            active:
+              activeQuery ===
+              category.name
+                .toLowerCase()
+                .replace('&', '')
+                .split(' ')
+                .join('-')
+          }"
+        >
+          {{ 'category.' + category.name | translate }}
+          <span>{{ getProductByCategory(category.name) }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

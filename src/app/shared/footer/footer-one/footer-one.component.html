@@ -1,0 +1,75 @@
+<footer>
+   <div
+      [ngClass]="'tp-footer-area ' + (primary_style ? 'tp-footer-style-2 tp-footer-style-primary tp-footer-style-6' : '') + ' ' + (style_2 ? 'tp-footer-style-2' : style_3 ? 'tp-footer-style-2 tp-footer-style-3' : '')"
+      [attr.data-bg-color]="style_2 ? 'footer-bg-white' : style_3 ? 'footer-bg-white' : 'footer-bg-grey'"
+      data-bg-color="footer-bg-grey">
+      <div class="tp-footer-top pt-60 pb-60">
+         <div class="container">
+            <div class="row">
+               <div class="pb-2 col-xl-2 col-lg-2 col-md-4 col-sm-6 col-12 text-center">
+                  <div class="tp-footer-logo">
+                     <a [routerLink]="['/']">
+                        <img src="assets/img/Logo_SVG/DLR Tech-Imagotipo Principal-Espacios Claros-RGB.svg" style="width: 180px;" alt="logo">
+                     </a>
+                  </div>
+                  <p class="roboto-light small w-100" style="line-height: 1;">
+                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Qui velit unde nobis delectus, dolorem
+                  </p>
+               </div>
+               <div class="pb-1 col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 ps-5 text-xs-center px-xs-0">
+                  <div class="tp-footer-widget footer-col mb-50">
+                     <h4 class="fs-6 roboto-regular">{{ 'footer.socialMedia' | translate }}</h4>
+                     <ul class="list-unstyled">
+                        <li><a href="#"> <small class="roboto-light" style="line-height: 1;"> <i class="fa-brands fa-instagram"></i> Instagram</small></a></li>
+                        <li><a href="#"> <small class="roboto-light" style="line-height: 1;"> <i class="fa-brands fa-facebook"></i> Facebook</small></a></li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="pb-1 col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 ps-5 text-xs-center px-xs-0">
+                  <div class="tp-footer-widget footer-col mb-50">
+                     <h4 class="fs-6 roboto-regular">{{ 'footer.contacts' | translate }}</h4>
+                     <small class="roboto-regular">{{ 'footer.contactUsBy' | translate }}:</small>
+                     <ul class="list-unstyled">
+                        <li><a href="#"> <small class="roboto-light" style="line-height: 1;">{{ 'footer.callUs' | translate }} +58 424-999-999</small></a></li>
+                        <li><a href="#"> <small class="roboto-light" style="line-height: 1;">{{'example@mail.com'}}</small></a></li>
+                        <li><a href="#"> <small class="roboto-light" style="line-height: 1;">{{'dlr@dlr.com'}}</small></a></li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="pb-1 col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 ps-5 text-xs-center px-xs-0">
+                  <div class="tp-footer-widget footer-col mb-50">
+                     <h4 class="fs-6 roboto-regular">{{ 'footer.us' | translate }}</h4>
+                     <ul class="list-unstyled">
+                        <li><a href="#"> <small class="roboto-light" style="line-height: 1;">{{ 'footer.supportCenter' | translate }} </small></a></li>
+                        <li><a href="#"> <small class="roboto-light" style="line-height: 1;">{{ 'footer.clientAssistant' | translate }} </small></a></li>
+                        <li><a href="#"> <small class="roboto-light" style="line-height: 1;">{{ 'footer.aboutUs' | translate }} </small></a></li>
+                        <li><a href="#"> <small class="roboto-light" style="line-height: 1;">{{ 'footer.rightsReserved' | translate }} </small></a></li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="pb-1 col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 ps-5 text-xs-center px-xs-0">
+                  <div class="tp-footer-widget footer-col mb-50">
+                     <h4 class="fs-6 roboto-regular">{{ 'footer.clientAssistant' | translate }}</h4>
+                     <ul class="list-unstyled">
+                        <li><a href="#"> <small class="roboto-light" style="line-height: 1;">{{ 'footer.faqAndHelp' | translate }} </small></a></li>
+                        <li><a href="#"> <small class="roboto-light" style="line-height: 1;">{{ 'footer.shipmentAndDelivery' | translate }} </small></a></li>
+                        <li><a href="#"> <small class="roboto-light" style="line-height: 1;">{{ 'footer.changesAndReturns' | translate }} </small></a></li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="pb-1 col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6 ps-5 text-xs-center px-xs-0">
+                  <div class="tp-footer-widget footer-col mb-50">
+                     <h4 class="fs-6 roboto-regular">{{ 'footer.information' | translate }}</h4>
+                     <ul class="list-unstyled">
+                        <li><a href="#"> <small class="roboto-light" style="line-height: 1;">{{ 'footer.rightsAndPrivacy' | translate }} </small></a></li>
+                        <li><a href="#"> <small class="roboto-light" style="line-height: 1;">{{ 'footer.rightsAndConditions' | translate }} </small></a></li>
+                        <li><a href="#"> <small class="roboto-light" style="line-height: 1;">{{ 'footer.refundPolicy' | translate }} </small></a></li>
+                        <li><a href="#"> <small class="roboto-light" style="line-height: 1;">{{ 'footer.ourLocation' | translate }} </small></a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</footer>

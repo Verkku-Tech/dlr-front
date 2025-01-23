@@ -1,0 +1,85 @@
+<div [ngClass]="['offcanvas__area offcanvas__radius', utilsService.openMobileMenus ? 'offcanvas-opened' : '']">
+  <div class="offcanvas__wrapper">
+
+    <div class="offcanvas__close">
+      <button (click)="utilsService.handleOpenMobileMenu()" class="offcanvas__close-btn offcanvas-close-btn">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11 1L1 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <path d="M1 1L11 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="offcanvas__content pb-0">
+
+      <div class="offcanvas__top d-flex justify-content-between align-items-center">
+        <div class="offcanvas__logo logo">
+          <a [routerLink]="['/']" role="button">
+            <img src="../../../../../assets/img/Logo_SVG/DLR Tech-Imagotipo Principal-Espacios Claros-RGB.svg"
+              alt="logo" width="140px" />
+          </a>
+        </div>
+      </div>
+
+      <div class="offcanvas__category pb-10">
+        <button (click)="toggleCategoryActive()"
+          class="roboto-light tp-offcanvas-category-toggle rounded-3 ">
+          <i class="fa-solid fa-bars text-start "></i>
+          <span translate>offcanvas.allCategories</span>
+        </button>
+
+        <div class="tp-category-mobile-menu">
+          <nav [ngClass]="['tp-category-menu-content', isCategoryActive ? 'active' : '']">
+            <ul [ngClass]="isCategoryActive ? 'active' : ''">
+
+              <li *ngFor="let item of categoryItems" class="text-center">
+                <a class="cursor-pointer">
+
+                  <span class="roboto-light">{{ item.name }}</span>
+                  <!-- <button *ngIf="item.children" (click)="handleOpenSubCategory(item.parent)"
+                    class="dropdown-toggle-btn">
+                    <i class="fa-regular fa-angle-right"></i>
+                  </button> -->
+                </a>
+
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <div class="tp-main-menu-mobile fix d-lg-none mb-40">
+
+        <nav class="tp-main-menu-content">
+
+          <ul *ngFor="let menu of mobile_menu">
+            <li class="border_animated">
+              <a role="button" class="roboto-light" [routerLink]="['/']">{{menu.title | translate }}</a>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+    </div>
+
+    <div class="offcanvas__bottom">
+      <div class="offcanvas__footer d-flex align-items-center justify-content-between">
+
+        <a role="button" class="roboto-light w-100 th-color-primary text-center fs-6" [routerLink]="['/profile']">
+          <span>{{'offcanvas.viewProfile' | translate }}</span>
+        </a>
+
+        <a role="button" [routerLink]="['/']" (click)="authService.logout()" class="roboto-light w-100 th-color-primary text-center fs-6">
+          <span>{{'offcanvas.logout' | translate }}</span>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div (click)="utilsService.handleOpenMobileMenu()"
+  [ngClass]="['body-overlay', utilsService.openMobileMenus ? 'opened' : '']">
+</div>

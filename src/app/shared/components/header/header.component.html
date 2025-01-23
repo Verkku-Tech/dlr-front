@@ -1,0 +1,542 @@
+<header>
+    <div class="tp-header-area p-relative z-index-11">
+
+        <div class="tp-header-main tp-header-sticky mx-2 my-0 py-0 p-2 ps-0">
+            <div class="row align-items-center">
+
+                <!-- logo -->
+                <div class="pe-xl-1 col-xl-1 col-lg-2 col-md-2 col-6" style="cursor: pointer;">
+                    <div class="logo justify-content-start">
+                        <a [routerLink]="['/']">
+                            <img src="assets/img/Logo_SVG/DLR Tech-Imagotipo Principal-Espacios Claros-RGB.svg"
+                                alt="logo" style="max-width: 9rem; height: 6rem">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- menu options -->
+                <div class="ps-xl-5 col-xl-5 col-lg-5 d-none d-lg-block">
+
+                    <div class="tp-header-sticky-menu main-menu menu-style-1 d-none d-lg-block">
+                        <nav id="mobile-menu">
+                            <app-top-menu class="menu-bar"></app-top-menu>
+                        </nav>
+                    </div>
+
+                </div>
+
+                <!-- search input -->
+                <div class="col-xl-4 col-lg-3 d-none d-lg-block">
+                    <div class="tp-header-search-2">
+                        <form>
+                            <input type="text" [placeholder]="'search.title' | translate" [(ngModel)]="searchText"
+                                name="searchText" class="roboto-light" (keyup.enter)="handleSearchSubmit()">
+                            <button type="button" (click)="handleSearchSubmit()">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M18.9999 19L14.6499 14.65" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- cart -->
+                <div class="col-xl-2 col-lg-2 col-md-10 col-6">
+                    <div class="tp-header-main-right d-flex align-items-center justify-content-end">
+
+
+                        <div class="tp-header-action d-flex align-items-center ml-50 cursor-pointer">
+
+                            @if(translate.langs[0] == 'es') {
+                            <!-- ve icon -->
+                            <div class="tp-header-action-item">
+                                <button [ngbTooltip]="'Cambiar a Inglés'" (click)="changeLanguage('en')" class="tp-header-action-btn cartmini-open-btn"
+                                    type="button"><svg width="21" height="22" version="1.1" id="Layer_1"
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
+                                        xml:space="preserve">
+                                        <rect x="7.286" y="173.1" style="fill:#103B9B;" width="497.43"
+                                            height="165.81" />
+                                        <rect x="7.286" y="338.9" style="fill:#ED1F34;" width="497.43"
+                                            height="165.81" />
+                                        <rect x="7.286" y="7.286" style="fill:#FFE000;" width="497.43"
+                                            height="165.81" />
+                                        <path
+                                            d="M504.714,0H7.286C3.262,0,0,3.262,0,7.286v497.427C0,508.738,3.262,512,7.286,512h497.427c4.024,0,7.286-3.262,7.286-7.286
+                                      V7.286C512,3.262,508.738,0,504.714,0z M497.427,14.573v151.236H14.573V14.573H497.427z M14.573,497.427V346.191h423.817
+                                      c4.024,0,7.287-3.262,7.287-7.286c0-4.025-3.262-7.287-7.287-7.287H14.573V180.382h482.854v151.235h-25.875
+                                      c-4.024,0-7.286,3.262-7.286,7.287s3.262,7.286,7.286,7.286h25.875v151.236H14.573V497.427z" />
+                                        <g>
+                                            <circle style="fill:#FFFFFF;" cx="157.47" cy="284.75" r="12.436" />
+                                            <circle style="fill:#FFFFFF;" cx="205.24" cy="236.47" r="12.436" />
+                                            <circle style="fill:#FFFFFF;" cx="238.66" cy="227.25" r="12.436" />
+                                            <circle style="fill:#FFFFFF;" cx="176.63" cy="256" r="12.436" />
+                                            <circle style="fill:#FFFFFF;" cx="354.53" cy="284.75" r="12.436" />
+                                            <circle style="fill:#FFFFFF;" cx="306.76" cy="236.47" r="12.436" />
+                                            <circle style="fill:#FFFFFF;" cx="273.33" cy="227.25" r="12.436" />
+                                            <circle style="fill:#FFFFFF;" cx="335.37" cy="256" r="12.436" />
+                                        </g>
+                                    </svg>
+
+                                </button>
+                            </div>
+                            }
+                            @else {
+                            <!-- usa icon -->
+                            <div class="tp-header-action-item me-lg-2">
+                                <button [ngbTooltip]="'Switch to Spanish'" (click)="changeLanguage('es')" class="tp-header-action-btn cartmini-open-btn"
+                                    type="button">
+                                    <svg width="21" height="22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 130 120"
+                                        enable-background="new 0 0 130 120" xml:space="preserve">
+                                        <g id="Infos">
+                                            <rect id="BG" x="-200" y="-1350" fill="#D8D8D8" width="2180"
+                                                height="1700" />
+                                        </g>
+                                        <g id="Others">
+                                            <g>
+                                                <rect y="0" fill="#DC4437" width="130" height="13.3" />
+                                                <rect y="26.7" fill="#DC4437" width="130" height="13.3" />
+                                                <rect y="80" fill="#DC4437" width="130" height="13.3" />
+                                                <rect y="106.7" fill="#DC4437" width="130" height="13.3" />
+                                                <rect y="53.3" fill="#DC4437" width="130" height="13.3" />
+                                                <rect y="13.3" fill="#FFFFFF" width="130" height="13.3" />
+                                                <rect y="40" fill="#FFFFFF" width="130" height="13.3" />
+                                                <rect y="93.3" fill="#FFFFFF" width="130" height="13.3" />
+                                                <rect y="66.7" fill="#FFFFFF" width="130" height="13.3" />
+                                                <rect y="0" fill="#2A66B7" width="70" height="66.7" />
+                                                <polygon fill="#FFFFFF"
+                                                    points="13.5,4 15.8,8.9 21,9.7 17.2,13.6 18.1,19 13.5,16.4 8.9,19 9.8,13.6 6,9.7 11.2,8.9 		" />
+                                                <polygon fill="#FFFFFF"
+                                                    points="34,4 36.3,8.9 41.5,9.7 37.8,13.6 38.6,19 34,16.4 29.4,19 30.2,13.6 26.5,9.7 31.7,8.9 		" />
+                                                <polygon fill="#FFFFFF"
+                                                    points="54.5,4 56.8,8.9 62,9.7 58.2,13.6 59.1,19 54.5,16.4 49.9,19 50.8,13.6 47,9.7 52.2,8.9 		" />
+                                                <polygon fill="#FFFFFF" points="24,24 26.3,28.9 31.5,29.7 27.8,33.6 28.6,39 24,36.4 19.4,39 20.2,33.6 16.5,29.7 21.7,28.9 		
+			" />
+                                                <polygon fill="#FFFFFF" points="44.5,24 46.8,28.9 52,29.7 48.2,33.6 49.1,39 44.5,36.4 39.9,39 40.8,33.6 37,29.7 42.2,28.9 		
+			" />
+                                                <polygon fill="#FFFFFF" points="13.5,45.2 15.8,50.1 21,50.9 17.2,54.7 18.1,60.2 13.5,57.6 8.9,60.2 9.8,54.7 6,50.9 11.2,50.1 
+					" />
+                                                <polygon fill="#FFFFFF" points="34,45.2 36.3,50.1 41.5,50.9 37.8,54.7 38.6,60.2 34,57.6 29.4,60.2 30.2,54.7 26.5,50.9 
+			31.7,50.1 		" />
+                                                <polygon fill="#FFFFFF" points="54.5,45.2 56.8,50.1 62,50.9 58.2,54.7 59.1,60.2 54.5,57.6 49.9,60.2 50.8,54.7 47,50.9 
+			52.2,50.1 		" />
+                                            </g>
+                                        </g>
+                                        <g id="Europe">
+                                            <g id="Row_5">
+                                            </g>
+                                            <g id="Row_4">
+                                            </g>
+                                            <g id="Row_3">
+                                            </g>
+                                            <g id="Row_2">
+                                            </g>
+                                            <g id="Row_1">
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </button>
+                            </div>
+                            }
+
+
+                            <!-- cart icon -->
+                            <div class="tp-header-action-item">
+                                <button (click)="cartService.handleOpenCartSidebar()" type="button"
+                                    class="tp-header-action-btn cartmini-open-btn">
+                                    <svg width="21" height="22" viewBox="0 0 21 22" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M6.48626 20.5H14.8341C17.9004 20.5 20.2528 19.3924 19.5847 14.9348L18.8066 8.89359C18.3947 6.66934 16.976 5.81808 15.7311 5.81808H5.55262C4.28946 5.81808 2.95308 6.73341 2.4771 8.89359L1.69907 14.9348C1.13157 18.889 3.4199 20.5 6.48626 20.5Z"
+                                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M6.34902 5.5984C6.34902 3.21232 8.28331 1.27803 10.6694 1.27803V1.27803C11.8184 1.27316 12.922 1.72619 13.7362 2.53695C14.5504 3.3477 15.0081 4.44939 15.0081 5.5984V5.5984"
+                                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M7.70365 10.1018H7.74942" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M13.5343 10.1018H13.5801" stroke="currentColor" stroke-width="1.5"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg>
+                                    <span class="tp-header-action-badge">
+                                        {{cartService.totalPriceQuantity().quantity}}
+                                    </span>
+                                </button>
+                            </div>
+
+                            <!-- text -->
+                            <span (click)="cartService.handleOpenCartSidebar()"
+                                class="ms-3 menu-header-text d-none d-lg-block ">
+                                {{ 'cart.cart' | translate }}
+                            </span>
+                            <!-- mobile-menu -->
+
+                            <div class="tp-header-action-item d-lg-none">
+                                <button (click)="utilsService.handleOpenMobileMenu()" type="button"
+                                    class="tp-header-action-btn tp-offcanvas-open-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="16" viewBox="0 0 30 16">
+                                        <rect x="10" width="20" height="2" fill="currentColor" />
+                                        <rect x="5" y="7" width="25" height="2" fill="currentColor" />
+                                        <rect x="10" y="14" width="20" height="2" fill="currentColor" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        @if (showSecondNavbar) {
+
+        <div class="tp-header-bottom tp-header-bottom-border d-none d-lg-block mx-4 my-0 p-0 ps-2">
+            <div class="tp-mega-menu-wrapper p-relative">
+                <div class="row align-items-center">
+                    <div class="col-xl-9 col-lg-9 ps-0">
+                        <div class="main-menu menu-style-1">
+                            <nav class="tp-main-menu-content d-inline-flex justify-content-center align-items-center ">
+                                <div class="me-4">
+                                    <app-header-category></app-header-category>
+                                </div>
+                                <app-top-menu-secondary class="menu-bar"></app-top-menu-secondary>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 px-0">
+
+                        <div class="tp-header-login d-none d-lg-block justify-content-end me-2" style="cursor: pointer;">
+
+                            @if (authService.isLoggedIn()) {
+                            <a [routerLink]="['/profile',authService.userId()]"
+                                class="d-flex align-items-center justify-content-end">
+
+                                <div class="tp-header-login-icon justify-content-end">
+                                    <span class="m-0 border-0 ">
+                                        <svg width="17" height="21" viewBox="0 0 17 21" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="8.57894" cy="5.77803" r="4.77803" stroke="currentColor"
+                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M1.00002 17.2014C0.998732 16.8655 1.07385 16.5337 1.2197 16.2311C1.67736 15.3158 2.96798 14.8307 4.03892 14.611C4.81128 14.4462 5.59431 14.336 6.38217 14.2815C7.84084 14.1533 9.30793 14.1533 10.7666 14.2815C11.5544 14.3367 12.3374 14.4468 13.1099 14.611C14.1808 14.8307 15.4714 15.27 15.9291 16.2311C16.2224 16.8479 16.2224 17.564 15.9291 18.1808C15.4714 19.1419 14.1808 19.5812 13.1099 19.7918C12.3384 19.9634 11.5551 20.0766 10.7666 20.1304C9.57937 20.2311 8.38659 20.2494 7.19681 20.1854C6.92221 20.1854 6.65677 20.1854 6.38217 20.1304C5.59663 20.0773 4.81632 19.9641 4.04807 19.7918C2.96798 19.5812 1.68652 19.1419 1.2197 18.1808C1.0746 17.8747 0.999552 17.5401 1.00002 17.2014Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                    </span>
+                                </div>
+
+                                <span class="ms-0 me-2 menu-header-text d-none d-lg-block ">
+                                    {{ 'offcanvas.viewProfile' | translate }}
+                                </span>
+
+                            </a>
+                            }
+                            @else {
+                            <a [routerLink]="['/auth/login']" class="d-flex align-items-center justify-content-end">
+
+                                <div class="tp-header-login-icon justify-content-end">
+                                    <span class="m-0 border-0 ">
+                                        <svg width="17" height="21" viewBox="0 0 17 21" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="8.57894" cy="5.77803" r="4.77803" stroke="currentColor"
+                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M1.00002 17.2014C0.998732 16.8655 1.07385 16.5337 1.2197 16.2311C1.67736 15.3158 2.96798 14.8307 4.03892 14.611C4.81128 14.4462 5.59431 14.336 6.38217 14.2815C7.84084 14.1533 9.30793 14.1533 10.7666 14.2815C11.5544 14.3367 12.3374 14.4468 13.1099 14.611C14.1808 14.8307 15.4714 15.27 15.9291 16.2311C16.2224 16.8479 16.2224 17.564 15.9291 18.1808C15.4714 19.1419 14.1808 19.5812 13.1099 19.7918C12.3384 19.9634 11.5551 20.0766 10.7666 20.1304C9.57937 20.2311 8.38659 20.2494 7.19681 20.1854C6.92221 20.1854 6.65677 20.1854 6.38217 20.1304C5.59663 20.0773 4.81632 19.9641 4.04807 19.7918C2.96798 19.5812 1.68652 19.1419 1.2197 18.1808C1.0746 17.8747 0.999552 17.5401 1.00002 17.2014Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                    </span>
+                                </div>
+
+                                <span class="ms-0 me-2 menu-header-text d-none d-lg-block ">
+                                    {{ 'offcanvas.login' | translate }}
+                                </span>
+
+                            </a>
+                            }
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</header>
+
+<div id="header-sticky-2" [ngClass]="['tp-header-sticky-area',headerSticky ? 'header-sticky-2' : '']">
+    <div class="tp-mega-menu-wrapper p-relative mx-4 my-0 py-0 p-2 ps-0">
+        <div class="row align-items-center">
+
+            <!-- logo -->
+            <div class="pe-xl-1 col-xl-1 col-lg-2 col-md-2 col-6">
+                <div class="logo justify-content-start ">
+                    <a [routerLink]="['/']">
+                        <img src="assets/img/Logo_SVG/DLR Tech-Imagotipo Principal-Espacios Claros-RGB.svg" alt="logo"
+                            style="max-width: 9rem; height: 6rem">
+                    </a>
+                </div>
+            </div>
+
+            <!-- menu options -->
+            <div class="ps-xl-5 col-xl-5 col-lg-5 d-none d-lg-block">
+
+                <div class="tp-header-sticky-menu main-menu menu-style-1 d-none d-lg-block">
+                    <nav id="mobile-menu">
+                        <app-top-menu class="menu-bar"></app-top-menu>
+                    </nav>
+                </div>
+
+            </div>
+
+            <!-- search input -->
+            <div class="col-xl-4 col-lg-3 d-none d-lg-block">
+                <div class="tp-header-search-2">
+                    <form (ngSubmit)="handleSearchSubmit()">
+                        <input type="text" [placeholder]="'search.title' | translate" [(ngModel)]="searchText"
+                            name="searchText" class="roboto-light">
+                        <button type="submit">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M18.9999 19L14.6499 14.65" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- cart -->
+            <div class="col-xl-2 col-lg-2 col-md-10 col-6">
+                <div class="tp-header-main-right d-flex align-items-center justify-content-end">
+
+                    <div class="tp-header-action d-flex align-items-center ml-50 cursor-pointer">
+
+                        @if(translate.langs[0] == 'es') {
+                        <!-- ve icon -->
+                        <div class="tp-header-action-item">
+                            <button (click)="changeLanguage('en')" class="tp-header-action-btn cartmini-open-btn"
+                                type="button"><svg width="21" height="22" version="1.1" id="Layer_1"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
+                                    xml:space="preserve">
+                                    <rect x="7.286" y="173.1" style="fill:#103B9B;" width="497.43" height="165.81" />
+                                    <rect x="7.286" y="338.9" style="fill:#ED1F34;" width="497.43" height="165.81" />
+                                    <rect x="7.286" y="7.286" style="fill:#FFE000;" width="497.43" height="165.81" />
+                                    <path
+                                        d="M504.714,0H7.286C3.262,0,0,3.262,0,7.286v497.427C0,508.738,3.262,512,7.286,512h497.427c4.024,0,7.286-3.262,7.286-7.286
+                                      V7.286C512,3.262,508.738,0,504.714,0z M497.427,14.573v151.236H14.573V14.573H497.427z M14.573,497.427V346.191h423.817
+                                      c4.024,0,7.287-3.262,7.287-7.286c0-4.025-3.262-7.287-7.287-7.287H14.573V180.382h482.854v151.235h-25.875
+                                      c-4.024,0-7.286,3.262-7.286,7.287s3.262,7.286,7.286,7.286h25.875v151.236H14.573V497.427z" />
+                                    <g>
+                                        <circle style="fill:#FFFFFF;" cx="157.47" cy="284.75" r="12.436" />
+                                        <circle style="fill:#FFFFFF;" cx="205.24" cy="236.47" r="12.436" />
+                                        <circle style="fill:#FFFFFF;" cx="238.66" cy="227.25" r="12.436" />
+                                        <circle style="fill:#FFFFFF;" cx="176.63" cy="256" r="12.436" />
+                                        <circle style="fill:#FFFFFF;" cx="354.53" cy="284.75" r="12.436" />
+                                        <circle style="fill:#FFFFFF;" cx="306.76" cy="236.47" r="12.436" />
+                                        <circle style="fill:#FFFFFF;" cx="273.33" cy="227.25" r="12.436" />
+                                        <circle style="fill:#FFFFFF;" cx="335.37" cy="256" r="12.436" />
+                                    </g>
+                                </svg>
+
+                            </button>
+                        </div>
+                        }
+                        @else {
+                        <!-- usa icon -->
+                        <div class="tp-header-action-item me-lg-2">
+                            <button (click)="changeLanguage('es')" class="tp-header-action-btn cartmini-open-btn"
+                                type="button">
+                                <svg width="21" height="22" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 130 120"
+                                    enable-background="new 0 0 130 120" xml:space="preserve">
+                                    <g id="Infos">
+                                        <rect id="BG" x="-200" y="-1350" fill="#D8D8D8" width="2180" height="1700" />
+                                    </g>
+                                    <g id="Others">
+                                        <g>
+                                            <rect y="0" fill="#DC4437" width="130" height="13.3" />
+                                            <rect y="26.7" fill="#DC4437" width="130" height="13.3" />
+                                            <rect y="80" fill="#DC4437" width="130" height="13.3" />
+                                            <rect y="106.7" fill="#DC4437" width="130" height="13.3" />
+                                            <rect y="53.3" fill="#DC4437" width="130" height="13.3" />
+                                            <rect y="13.3" fill="#FFFFFF" width="130" height="13.3" />
+                                            <rect y="40" fill="#FFFFFF" width="130" height="13.3" />
+                                            <rect y="93.3" fill="#FFFFFF" width="130" height="13.3" />
+                                            <rect y="66.7" fill="#FFFFFF" width="130" height="13.3" />
+                                            <rect y="0" fill="#2A66B7" width="70" height="66.7" />
+                                            <polygon fill="#FFFFFF"
+                                                points="13.5,4 15.8,8.9 21,9.7 17.2,13.6 18.1,19 13.5,16.4 8.9,19 9.8,13.6 6,9.7 11.2,8.9 		" />
+                                            <polygon fill="#FFFFFF"
+                                                points="34,4 36.3,8.9 41.5,9.7 37.8,13.6 38.6,19 34,16.4 29.4,19 30.2,13.6 26.5,9.7 31.7,8.9 		" />
+                                            <polygon fill="#FFFFFF"
+                                                points="54.5,4 56.8,8.9 62,9.7 58.2,13.6 59.1,19 54.5,16.4 49.9,19 50.8,13.6 47,9.7 52.2,8.9 		" />
+                                            <polygon fill="#FFFFFF" points="24,24 26.3,28.9 31.5,29.7 27.8,33.6 28.6,39 24,36.4 19.4,39 20.2,33.6 16.5,29.7 21.7,28.9 		
+			" />
+                                            <polygon fill="#FFFFFF" points="44.5,24 46.8,28.9 52,29.7 48.2,33.6 49.1,39 44.5,36.4 39.9,39 40.8,33.6 37,29.7 42.2,28.9 		
+			" />
+                                            <polygon fill="#FFFFFF" points="13.5,45.2 15.8,50.1 21,50.9 17.2,54.7 18.1,60.2 13.5,57.6 8.9,60.2 9.8,54.7 6,50.9 11.2,50.1 
+					" />
+                                            <polygon fill="#FFFFFF" points="34,45.2 36.3,50.1 41.5,50.9 37.8,54.7 38.6,60.2 34,57.6 29.4,60.2 30.2,54.7 26.5,50.9 
+			31.7,50.1 		" />
+                                            <polygon fill="#FFFFFF" points="54.5,45.2 56.8,50.1 62,50.9 58.2,54.7 59.1,60.2 54.5,57.6 49.9,60.2 50.8,54.7 47,50.9 
+			52.2,50.1 		" />
+                                        </g>
+                                    </g>
+                                    <g id="Europe">
+                                        <g id="Row_5">
+                                        </g>
+                                        <g id="Row_4">
+                                        </g>
+                                        <g id="Row_3">
+                                        </g>
+                                        <g id="Row_2">
+                                        </g>
+                                        <g id="Row_1">
+                                        </g>
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+                        }
+                        <!-- icon -->
+                        <div class="tp-header-action-item">
+                            <button (click)="cartService.handleOpenCartSidebar()" type="button"
+                                class="tp-header-action-btn cartmini-open-btn">
+                                <svg width="21" height="22" viewBox="0 0 21 22" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M6.48626 20.5H14.8341C17.9004 20.5 20.2528 19.3924 19.5847 14.9348L18.8066 8.89359C18.3947 6.66934 16.976 5.81808 15.7311 5.81808H5.55262C4.28946 5.81808 2.95308 6.73341 2.4771 8.89359L1.69907 14.9348C1.13157 18.889 3.4199 20.5 6.48626 20.5Z"
+                                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path
+                                        d="M6.34902 5.5984C6.34902 3.21232 8.28331 1.27803 10.6694 1.27803V1.27803C11.8184 1.27316 12.922 1.72619 13.7362 2.53695C14.5504 3.3477 15.0081 4.44939 15.0081 5.5984V5.5984"
+                                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M7.70365 10.1018H7.74942" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M13.5343 10.1018H13.5801" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <span class="tp-header-action-badge">
+                                    {{cartService.totalPriceQuantity().quantity}}
+                                </span>
+                            </button>
+                        </div>
+                        <!-- text -->
+                        <span (click)="cartService.handleOpenCartSidebar()"
+                            class="ms-3 menu-header-text d-none d-lg-block ">
+                            {{ 'cart.cart' | translate }}
+                        </span>
+                        <!-- mobile-menu -->
+                        <div class="tp-header-action-item d-lg-none">
+                            <button (click)="utilsService.handleOpenMobileMenu()" type="button"
+                                class="tp-header-action-btn tp-offcanvas-open-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="16" viewBox="0 0 30 16">
+                                    <rect x="10" width="20" height="2" fill="currentColor" />
+                                    <rect x="5" y="7" width="25" height="2" fill="currentColor" />
+                                    <rect x="10" y="14" width="20" height="2" fill="currentColor" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (showSecondNavbar) {
+    <div class="tp-header-bottom tp-header-bottom-border d-none d-lg-block mx-4 my-0 p-0 ps-2">
+        <div class="tp-mega-menu-wrapper p-relative">
+            <div class="row align-items-center">
+                <div class="col-xl-9 col-lg-9 ps-0">
+                    <div class="main-menu menu-style-1">
+                        <nav class="tp-main-menu-content d-inline-flex justify-content-center align-items-center ">
+                            <div class="me-4">
+                                <app-header-category></app-header-category>
+                            </div>
+                            <app-top-menu-secondary class="menu-bar"></app-top-menu-secondary>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 px-0">
+
+                    <div class="tp-header-login d-none d-lg-block justify-content-end me-2">
+
+                        @if (authService.isLoggedIn()) {
+                        <a [routerLink]="['/profile', authService.userId()]"
+                            class="d-flex align-items-center justify-content-end">
+
+                            <div class="tp-header-login-icon justify-content-end">
+                                <span class="m-0 border-0 ">
+                                    <svg width="17" height="21" viewBox="0 0 17 21" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="8.57894" cy="5.77803" r="4.77803" stroke="currentColor"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M1.00002 17.2014C0.998732 16.8655 1.07385 16.5337 1.2197 16.2311C1.67736 15.3158 2.96798 14.8307 4.03892 14.611C4.81128 14.4462 5.59431 14.336 6.38217 14.2815C7.84084 14.1533 9.30793 14.1533 10.7666 14.2815C11.5544 14.3367 12.3374 14.4468 13.1099 14.611C14.1808 14.8307 15.4714 15.27 15.9291 16.2311C16.2224 16.8479 16.2224 17.564 15.9291 18.1808C15.4714 19.1419 14.1808 19.5812 13.1099 19.7918C12.3384 19.9634 11.5551 20.0766 10.7666 20.1304C9.57937 20.2311 8.38659 20.2494 7.19681 20.1854C6.92221 20.1854 6.65677 20.1854 6.38217 20.1304C5.59663 20.0773 4.81632 19.9641 4.04807 19.7918C2.96798 19.5812 1.68652 19.1419 1.2197 18.1808C1.0746 17.8747 0.999552 17.5401 1.00002 17.2014Z"
+                                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                            </div>
+
+                            <span class="ms-0 me-2 menu-header-text d-none d-lg-block ">
+                                {{ 'offcanvas.viewProfile' | translate }}
+                            </span>
+
+                        </a>
+                        }
+                        @else {
+                        <a [routerLink]="['/auth/login']" class="d-flex align-items-center justify-content-end">
+
+                            <div class="tp-header-login-icon justify-content-end">
+                                <span class="m-0 border-0 ">
+                                    <svg width="17" height="21" viewBox="0 0 17 21" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="8.57894" cy="5.77803" r="4.77803" stroke="currentColor"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M1.00002 17.2014C0.998732 16.8655 1.07385 16.5337 1.2197 16.2311C1.67736 15.3158 2.96798 14.8307 4.03892 14.611C4.81128 14.4462 5.59431 14.336 6.38217 14.2815C7.84084 14.1533 9.30793 14.1533 10.7666 14.2815C11.5544 14.3367 12.3374 14.4468 13.1099 14.611C14.1808 14.8307 15.4714 15.27 15.9291 16.2311C16.2224 16.8479 16.2224 17.564 15.9291 18.1808C15.4714 19.1419 14.1808 19.5812 13.1099 19.7918C12.3384 19.9634 11.5551 20.0766 10.7666 20.1304C9.57937 20.2311 8.38659 20.2494 7.19681 20.1854C6.92221 20.1854 6.65677 20.1854 6.38217 20.1304C5.59663 20.0773 4.81632 19.9641 4.04807 19.7918C2.96798 19.5812 1.68652 19.1419 1.2197 18.1808C1.0746 17.8747 0.999552 17.5401 1.00002 17.2014Z"
+                                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                            </div>
+
+                            <span class="ms-0 me-2 menu-header-text d-none d-lg-block ">
+                                {{ 'offcanvas.login' | translate }}
+                            </span>
+
+                        </a>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+</div>
+
+<!-- cart sidebar start -->
+<app-cart-sidebar></app-cart-sidebar>
+<!-- cart sidebar end -->
+
+<!-- mobile sidebar start -->
+<app-mobile-sidebar product_type="electronics"></app-mobile-sidebar>
+<!-- mobile sidebar end -->

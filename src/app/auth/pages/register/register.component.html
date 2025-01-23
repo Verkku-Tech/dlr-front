@@ -1,0 +1,34 @@
+<main>
+
+    <section class="tp-login-area align-self-center p-relative z-index-1 fix vh-100">
+      <div class="tp-login-shape">
+        <img class="tp-login-shape-1" src="/assets/img/login/login-shape-1.png" alt="">
+        <img class="tp-login-shape-2" src="/assets/img/login/login-shape-2.png" alt="">
+        <img class="tp-login-shape-3" src="/assets/img/login/login-shape-3.png" alt="">
+        <img class="tp-login-shape-4" src="/assets/img/login/login-shape-4.png" alt="">
+      </div>
+      <div class="container h-100">
+        <div class="row justify-content-center mt-60" >
+          <div class="col-xl-6 col-lg-8">
+            <div class="tp-login-wrapper h-100">
+              <div class="tp-login-top text-center mb-30">
+                <h3 class="tp-login-title roboto-title roboto-semi-bold th-color-primary">Creación de Cuenta</h3>
+                <span class="roboto-regular th-color-primary">¡Bienvenido a DLR! ¿Ya tienes cuenta?&nbsp;<span>
+                    <a [routerLink]="['/auth/login']" class="text-decoration-underline">Ir a login</a>
+                  </span>
+                </span>
+              </div>
+              <div class="tp-login-option">
+  
+                <app-social-login></app-social-login>
+                <div class="tp-login-mail text-center mb-40">
+                  <p class="roboto-regular">o registrate con tu Email</p>
+                </div>
+                <app-register-form></app-register-form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>

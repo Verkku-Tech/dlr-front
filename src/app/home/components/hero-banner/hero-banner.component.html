@@ -1,0 +1,19 @@
+<div class="swiper h-auto">
+    <div class="swiper-wrapper d-flex">
+      @for (slide of HomeSliderData; track $index) {
+      <div class="swiper-slide" style="background-color: #cecece;">
+        <div class="hero-img cursor-pointer " [style.background-image]="'url(' + slide.img +')'">
+          <div class="text-container">
+            <h1 class="mb-4 theme-title animate__animated animate__slideInRight"> 
+              {{slide.title | translate}}
+            </h1>
+            <h4 class="theme-subtitle animate__animated animate__slideInRight">
+              {{slide.subtitle | translate }}
+            </h4>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+    <div class="tp-slider-dot tp-swiper-dot"></div>
+  </div>

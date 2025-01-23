@@ -1,0 +1,112 @@
+<section class="tp-product-area pb-55 mt-40">
+  <div class="container">
+    <div class="row align-items-end">
+      <div class="col-12">
+        <div class="tp-section-title-wrapper mb-40">
+          <h3 class="ms-sm-3 th-subtitle">
+            {{ 'newProducts.title' | translate }}
+          </h3>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="tp-product-tab mb-10 tp-tab d-flex justify-content-md-start ps-0 ms-0 ">
+          <ul class="nav nav-tabs justify-content-sm-start ps-0" style="place-content: center;">
+            <li *ngFor="let tab of tabs; let i = index" class="nav-item border_animated" [ngClass]="{ 'item_selected': activeTab === tab.key }">
+              <a class="nav-link roboto-light mb-3 py-3" style="font-size: medium;" role="button"
+                [ngClass]="{ active: activeTab === tab.key}" (click)="handleActiveTab(tab.key)">
+                {{ tab.description | translate }}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-12">
+        <div class="tp-product-tab-content">
+          <div class="row">
+            @for (item of filteredProducts.slice(0, itemsToShow); track $index) {
+            <div class="col-xl-3 col-lg-3 col-sm-6 col-xs-6">
+              <app-product-item-one [product]="item"></app-product-item-one>
+            </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-botton-container w-100 text-center ">
+      @if (itemsToShow < filteredProducts.length) {
+        <button (click)="showMoreItems()" class="btn btn-primary p-2 px-5 roboto-regular">{{ 'newProducts.showMore' | translate }}</button>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="tp-collection-area pt-20 pb-30">
+  <div class="container px-0">
+    <div class="row gx-2 gy-2 gy-md-0">
+      <div class="col">
+        <div class="grey-bg p-relative z-index-1 fix rounded tp-collection-item" style="min-height: 400px !important;">
+          <div class="tp-collection-thumb include-bg include-bg transition-3 me-3 ms-0 img-fluid " 
+          style="background-image: url(assets/img/support_assets/Banner_Tecnology.webp);">
+              </div>
+          <div class="tp-collection-content-3">
+            <h1>
+              <a [routerLink]="['/']">
+                <span class="roboto-light-title-2">
+                  {{ 'newProducts.banner.title' | translate }}, <br>
+                </span>
+                <span class="roboto-bold-title-2">
+                  {{ 'newProducts.banner.subtitleOne' | translate }}
+                  <br>
+                  {{ 'newProducts.banner.subtitleTwo' | translate }} <br>
+                </span>
+              </a>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="brands mb-20">
+  <div class="container px-0">
+    <div class="card th-bg-dark-blue p-4 m-1">
+      <h3 class="text-light">
+        {{ 'newProducts.brands.title' | translate }}
+      </h3>
+      <div class="card-sub-title roboto-thin text-light ">
+        {{ 'newProducts.brands.subtitleOne' | translate }}
+        <strong class="fw-light">
+          {{ 'newProducts.brands.subtitleTwo' | translate }}
+        </strong> 
+        {{ 'newProducts.brands.subtitleThree' | translate }}
+      </div>
+      
+    <section class="tp-brand-area pt-25">
+      <div class="row">
+          <div class="col-xl-12">
+              <div class="tp-brand-slider p-relative">
+                  <div class="tp-brand-1-slider-active swiper-container">
+                      <div class="swiper-wrapper" style="max-height: 100px !important;">
+
+                          <div *ngFor="let item of brands" class="swiper-slide text-center me-4">
+
+                              <div class="tp-ideal-item-2 w-img">
+                                  <div class="card p-0" style=" height: 80px;">
+                                      <img class="px-2 py-2 object-fit-contain w-100 bg-transparent" style="width: 80px; height:80px;"  [src]="item.logo" />
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+    </div>
+  </div>
+</section>

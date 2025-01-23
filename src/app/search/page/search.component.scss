@@ -1,0 +1,16 @@
+@media (max-width: 991px) {
+  .d-lg-block {
+    display: none !important;
+  }
+  
+  // Add animation for smooth transition
+  .col-xl-3 {
+    transition: all 0.3s ease;
+  }
+}
+
+// Optional: Style the filter toggle button
+.btn-primary {
+  padding: 10px 20px;
+  font-weight: 500;
+}
