@@ -1,7 +1,7 @@
   export interface IProductCart {
     id:                    string;
     name:                  string;
-  variant:                  string;
+    variant:                  string;
     orderQuantity:         number,
     imgUrl:                string;
     price:                 number;
@@ -13,6 +13,7 @@
   
   export interface IProduct {
     id:              string;
+    _id:              string;
     name:            string;
     slug:            string;
     description:     string;

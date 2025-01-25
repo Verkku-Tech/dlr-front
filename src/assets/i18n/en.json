@@ -188,6 +188,12 @@
         "message": "Please check if you have misspelt something or try searching with other words.",
         "imageAlt": "Empty cart image",
         "continueShopping": "Continue Shopping"
+      },
+      "product": {
+        "inStock": "In Stock",
+        "outOfStock": "Out of Stock",
+        "seeMore": "See More",
+        "seeLess": "See Less"
       }
     }
 }

@@ -193,5 +193,11 @@
         "title": "¡Ups! Página no encontrada",
         "message": "Vaya, esto es vergonzoso. Parece que la página que buscabas no se encontró.",
         "backToHome": "Volver al Inicio"
+    },
+    "product": {
+      "inStock": "Disponible",
+      "outOfStock": "Agotado",
+      "seeMore": "Ver más",
+      "seeLess": "Ver menos"
     }
 }

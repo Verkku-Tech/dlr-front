@@ -10,4 +10,6 @@ export class BreadcrumbComponent {
   @Input() subtitle!: string;
   @Input() full_width: boolean = false;
   @Input() shop_1600: boolean = false;
+  @Input() top_spacing: string = "";
+  @Input() bot_spacing: string = "";
 }
