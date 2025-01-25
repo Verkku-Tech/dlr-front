@@ -1,5 +1,5 @@
 export const environment = {
-    production: false, 
-    baseUrl: 'http://localhost:3000/api',
-    apiKey: 'AIzaSyCs4ZH8FlBcxkHD6nLjDQBD5z07xaDRO2A'
+    production: import.meta.env.NG_PRODUCTION, 
+    baseUrl: import.meta.env.NG_BASE_URL,
+    apiKey: import.meta.env.NG_API_KEY
 };

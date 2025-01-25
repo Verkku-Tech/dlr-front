@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IProduct, ProductVariant, StorageOption } from '../../../shared/interfaces/product.interface';
+import { IProduct} from '../../../shared/interfaces/product.interface';
 import { ProductService } from '../../../shared/services/product.service';
 import { CartService } from '../../../shared/services/cart.service';
 
@@ -20,6 +20,7 @@ export class ProductComponent implements OnInit{
   constructor(private route: ActivatedRoute, public productService: ProductService, public cartService: CartService) { }
 
   ngOnInit() {
+    console.log(1)
     this.route.paramMap.subscribe(params => {
       this.idProducto = params.get('id') ?? "";
     });
