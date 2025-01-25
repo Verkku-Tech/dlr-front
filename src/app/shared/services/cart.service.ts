@@ -32,7 +32,8 @@ export class CartService {
     payload: IProduct, 
     productVariant: ProductVariant | undefined, 
     storageOption: StorageOption | undefined,
-    orderQuantity: number = 1  
+    orderQuantity: number = 1,
+    showMsg: boolean | null = true  
   ) {
 
     if(!productVariant || !storageOption){
@@ -73,7 +74,8 @@ export class CartService {
       state.cart_products.push(item);
     }
 
-    this.toastrService.success(`${payload.name} added to cart`);
+    if(showMsg)
+      this.toastrService.success(`${payload.name} added to cart`);
     localStorage.setItem("cart_products", JSON.stringify(state.cart_products));
     
   };

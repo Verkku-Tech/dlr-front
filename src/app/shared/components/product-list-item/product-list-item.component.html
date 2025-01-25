@@ -1,6 +1,6 @@
 <div class="tp-product-list-item d-md-flex">
   <div class="tp-product-list-thumb p-relative fix">
-     <a [routerLink]="['/shop/shop-details', product.id]" style="height: 310px;background-color: #f2f3f5;">
+     <a [routerLink]="['/product/', product.id]" style="height: 310px;background-color: #f2f3f5;">
         <img [src]="productService.getDefaultImg(product)" alt="product-img">
      </a>
 
@@ -20,10 +20,10 @@
   <div class="tp-product-list-content">
      <div class="tp-product-content-2 pt-15">
         <div class="tp-product-tag-2">
-          <a [routerLink]="['/shop/shop-details', product.id]">{{ product.category }}</a>
+          <a [routerLink]="['/product/', product.id]">{{ product.category }}</a>
         </div>
         <h3 class="tp-product-title-2">
-           <a [routerLink]="['/shop/shop-details', product.id]">{{product.name}}</a>
+           <a [routerLink]="['/product/', product.id]">{{product.name}}</a>
         </h3>
         <div class="tp-product-rating-icon tp-product-rating-icon-2">
            <span><i class="fa-solid fa-star"></i></span>

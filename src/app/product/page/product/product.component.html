@@ -1,0 +1,189 @@
+<app-header [showSecondNavbar]="true"></app-header>
+@if(!product || loading){
+  <ngx-spinner template="<img src='assets/img/Logo_SVG/DLR Tech-Imagotipo Principal-Espacios Oscuros-RGB.svg'/ width='100px'>"></ngx-spinner>
+}
+@else {
+  <app-breadcrumb [subtitle]="product.category" top_spacing="pt-0" bot_spacing="pb-10"></app-breadcrumb>
+  <section class="tp-product-details-area">
+    <div class="tp-product-details-top pb-115">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-7 col-lg-6">
+            <div class="tp-product-details-thumb-wrapper tp-tab d-sm-flex">
+              <nav>
+                <div class="nav nav-tabs flex-sm-column" id="productDetailsNavThumb" role="tablist">
+                  <button *ngFor="let item of product?.productVariants; let i = index"
+                    [class.active]="item.imgUrl === productService.activeImg"
+                    (click)="productService.handleActiveVariant(item)" type="button" class="nav-link">
+                    <img [src]="item.imgUrl" alt="nav-img" style="background-color: #F4F5F7;" />
+                  </button>
+                </div>
+              </nav>
+              <div class="tab-content m-img" id="productDetailsNavContent">
+                <div class="tp-product-details-nav-main-thumb" style="background-color: #f5f6f8">
+                  <img [src]="productService.activeImg" alt="prd-image" />
+                  <!-- <div *ngIf="product.videoId" class="tp-product-details-thumb-video">
+                                <a (click)="utilsService.playVideo('B0WuqoXkJkY')" class="tp-product-details-thumb-video-btn cursor-pointer popup-video">
+                                  <i class="fas fa-play"></i>
+                                </a>
+                              </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-5 col-lg-6">
+            <div class="tp-product-details-wrapper" style="margin-left: 0px;">
+              <div class="tp-product-details-category">
+                <span>{{product.category}}</span>
+              </div>
+            </div>
+            <h3 class="tp-product-details-title">
+              {{product.name}}
+            </h3>
+            <div class="tp-product-details-inventory d-flex align-items-center mb-10">
+              <div class="tp-product-details-stock mb-10">
+                @if(product.qty > 0){
+                <span>{{'product.inStock' | translate}}</span>
+                }
+                @else {
+                <span>{{'product.outOfStock' | translate}}</span>
+                }
+              </div>
+              <div class="tp-product-details-rating-wrapper d-flex align-items-center mb-10">
+                <div class="tp-product-details-rating">
+                  <ng-container *ngFor="let i of [1,2,3,4,5]">
+                    <span>
+                      <i class="fa-solid fa-star" [style.color]="productService.getStarRating(i, product)">
+                      </i>
+                    </span>
+                  </ng-container>
+                </div>
+                <div class="tp-product-details-reviews">
+                  <span>({{ product.reviews.length }} Reviews)</span>
+                </div>
+              </div>
+            </div>
+            <p>
+              {{ textMore ? product.description : (product.description.substring(0, 100) + '...') }}
+              <span class="link" (click)="handleTextToggle()" style="cursor: pointer;">{{ textMore ? ('product.seeMore' |
+                translate) : ('product.seeLess' | translate) }}</span>
+            </p>
+            <!-- price -->
+            <div class="tp-product-details-price-wrapper mb-20">
+              <div *ngIf="productService.selectedVariant && productService.selectedStorage && productService.selectedVariant.offer">
+                <span class="tp-product-details-price old-price">${{ productService.selectedStorage.price }}</span>
+                <span class="tp-product-details-price new-price">
+                  ${{ (productService.selectedStorage.price - (productService.selectedStorage.price * productService.selectedVariant.offer.discount) / 100).toFixed(2) }}
+                </span>
+              </div>
+              <!-- variations -->
+              <div class="tp-product-details-variation">
+                <div class="tp-product-details-variation-item">
+                  <div
+                    *ngIf="productService.selectedVariant && !productService.selectedStorage && productService.selectedVariant.offer">
+                    <span class="tp-product-details-price old-price">${{ productService.selectedVariant.price }}</span>
+                    <span class="tp-product-details-price new-price">
+                      ${{ (productService.selectedVariant.price - (productService.selectedVariant.price *
+                      productService.selectedVariant.offer.discount) / 100).toFixed(2) }}
+                    </span>
+                  </div>
+                  <span
+                    *ngIf="productService.selectedVariant && productService.selectedStorage && !productService.selectedVariant.offer"
+                    class="tp-product-details-price">
+                    ${{ productService.selectedStorage.price.toFixed(2) }}
+                  </span>
+                  <span
+                    *ngIf="productService.selectedVariant && !productService.selectedStorage && !productService.selectedVariant.offer"
+                    class="tp-product-details-price">
+                    ${{ productService.selectedVariant.price.toFixed(2) }}
+                  </span>
+                </div>
+                <!-- Storage -->
+                <h4 class="tp-product-details-variation-title">Storage:</h4>
+                <div class="tp-product-details-variation-list d-flex flex-row">
+                  <button *ngFor="let item of productService.selectedVariant?.storageOptions; let i = index"
+                    [class.activeStorage]="item.storage == productService.selectedStorage?.storage"
+                    (click)="productService.handleSelectedStorage(item)" type="button"
+                    class="btn rounded w-auto me-2 d-flex align-items-center justify-content-center">
+                    <span
+                      [ngClass]="productService.selectedStorage?.storage == item.storage ? 'text-light' : 'text-dark'">{{item.storage}}</span>
+                  </button>
+                </div>
+  
+              </div>
+            </div>
+            <!-- actions -->
+            <div class="tp-product-details-action-wrapper">
+              <h3 class="tp-product-details-action-title">Quantity</h3>
+              <div class="tp-product-details-action-item-wrapper d-flex align-items-center">
+                <div class="tp-product-details-quantity">
+                  <div class="tp-product-quantity mb-15 mr-15">
+                    <span (click)="cartService.decrement()" class="tp-cart-minus">
+                      <svg width="11" height="2" viewBox="0 0 11 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 1H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                    <input class="tp-cart-input" type="text" [value]="cartService.orderQuantity" disabled>
+                    <span (click)="cartService.increment()" class="tp-cart-plus">
+                      <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1 6H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                        <path d="M5.5 10.5V1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                          stroke-linejoin="round" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+                <div class="tp-product-details-add-to-cart mb-15 w-100">
+                  <button
+                    (click)="cartService.addCartProduct(product, productService.selectedVariant, productService.selectedStorage, cartService.orderQuantity)"
+                    class="roboto-regular tp-logout-btn rounded-3 text-xs-center-original w-100 py-2 w-100 ">Agregar al
+                    Carrito</button>
+                </div>
+              </div>
+              <a (click)="cartService.addCartProduct(product, productService.selectedVariant, productService.selectedStorage, cartService.orderQuantity, false)"
+                [routerLink]="['/checkout']"
+                class="roboto-regular tp-save-btn rounded-3 text-xs-center-original w-100 py-2">Comprar Ahora</a>
+            </div>
+            <div>
+              <div class="tp-product-details-action-sm">
+                <div class="tp-product-details-query">
+                  <div class="tp-product-details-query-item d-flex align-items-center">
+                    <span>Category: </span>
+                    <p>{{product.category}}</p>
+                  </div>
+                  <div class="tp-product-details-query-item d-flex align-items-center">
+                    <span>Tags: </span>
+                    <p>
+                      {{ product.tags | formatTags }}
+                    </p>
+                  </div>
+  
+                </div>
+              </div>
+              <div>
+                <div class="tp-product-details-msg mb-15">
+                  <ul>
+                    <li>30 days easy returns</li>
+                    <li>Order yours before 2.30pm for same day dispatch</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tp-product-details-bottom pb-140">
+      <div class="container">
+        <div class="row">
+          <div class="col-x-12">
+            <!-- component TO DO -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+}
+<app-footer-one></app-footer-one>

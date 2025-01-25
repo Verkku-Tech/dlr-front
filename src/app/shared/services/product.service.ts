@@ -14,7 +14,8 @@ export class ProductService {
     this.getProducts({})
   }
   
-  public products: IProduct[] = []
+  public products: IProduct[] = [];
+  public product: IProduct = {} as IProduct;
   http: HttpClient = inject(HttpClient)
 
   public filter_offcanvas: boolean = false
@@ -31,6 +32,8 @@ export class ProductService {
 
   baseUrl = environment.baseUrl + '/v1/products'
   activeImg: string | undefined
+  defaultPrice: number | undefined
+  defaultProductRating: string | undefined
   selectedVariant: ProductVariant | undefined
   selectedStorage: StorageOption | undefined
   
@@ -55,7 +58,15 @@ export class ProductService {
     if(category) params.set("category", category)
       
     firstValueFrom(this.http.get<IProduct[]>(this.baseUrl, { params }))
-    .then(result => this.products = result)
+    .then(result => this.products = result.map(product => ({...product, id: product._id})))
+  }
+
+  public async getProductById(id: string): Promise<void> {
+    const result = await firstValueFrom(this.http.get<IProduct>(`${this.baseUrl}/${id}`));
+    this.product = result;
+    this.activeImg = this.getDefaultImg(result);
+    this.defaultPrice = this.getDefaultPrice(result);
+    this.defaultProductRating = this.getStarRating(5, result);
   }
 
   handleActiveVariant(variant: ProductVariant) {
@@ -67,6 +78,7 @@ export class ProductService {
     }
     this.activeImg = variant.imgUrl;
   }
+
   handleSelectedStorage(storageOpt: StorageOption) {
     this.selectedStorage = storageOpt;
   }
@@ -131,17 +143,6 @@ export class ProductService {
     };
   }
 
-
-//   // Get Products By id
-//   public getProductById(id: string): Observable<IProduct | undefined> {
-//     return this.getProducts().pipe(map(items => {
-//       const product = items.find(p => p.id === id);
-//       if(product){
-//         this.handleImageActive(product.img)
-//       }
-//       return product;
-//     }));
-//   }
 //    // Get related Products
 //    public getRelatedProducts(productId: string,category:string): Observable<IProduct[]> {
 //     return this.products.pipe(map(items => {
