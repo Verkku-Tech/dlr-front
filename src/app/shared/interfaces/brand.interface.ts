@@ -8,4 +8,5 @@ export interface IBrand {
     location?: string;
     status?: string;
     logo?: string;
+    params?: string;
   }
