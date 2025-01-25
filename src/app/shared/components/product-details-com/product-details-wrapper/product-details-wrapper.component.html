@@ -119,7 +119,7 @@
             class="roboto-regular tp-logout-btn rounded-3 text-xs-center-original w-100 py-2 w-100 ">Agregar al Carrito</button>
          </div>
       </div>
-      <a [routerLink]="['/']" class="roboto-regular tp-save-btn rounded-3 text-xs-center-original w-100 py-2">Comprar Ahora</a>
+      <a (click)="close()" [routerLink]="['/checkout']" class="roboto-regular tp-save-btn rounded-3 text-xs-center-original w-100 py-2">Comprar Ahora</a>
    </div>
 
    <div>

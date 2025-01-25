@@ -2,7 +2,6 @@ import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import Swiper from 'swiper';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
-import { CategoryService } from '../../../shared/services/category.service';
 
 @Component({
   selector: 'app-ideal-product',
@@ -17,7 +16,7 @@ export class IdealProductComponent implements OnInit, AfterViewInit {
     {
       id: 1,
       link: '/search',
-      queryParams: { category: 'SmartPhones' },
+      queryParams: { category: 'smartphones' },
       img: '/assets/img/Icons_SVG/Smartphone_Icon.svg',
       title: 'idealProduct.smartPhones',
       description: 'idealProduct.devices'
@@ -25,7 +24,7 @@ export class IdealProductComponent implements OnInit, AfterViewInit {
     {
       id: 2,
       link: '/search',
-      queryParams: { category: 'SmartWatches' },
+      queryParams: { category: 'smartwatches' },
       img: '/assets/img/Icons_SVG/Smartwatche_Icon.svg',
       title: 'idealProduct.smartWatches',
       description: 'idealProduct.devices'
@@ -33,7 +32,7 @@ export class IdealProductComponent implements OnInit, AfterViewInit {
     {
       id: 3,
       link: '/search',
-      queryParams: { category: 'Headphones' },
+      queryParams: { category: 'headphones' },
       img: '/assets/img/Icons_SVG/Audífonos_Icon.svg',
       title: 'idealProduct.headphones',
       description: 'idealProduct.devices'
@@ -41,7 +40,7 @@ export class IdealProductComponent implements OnInit, AfterViewInit {
     {
       id: 4,
       link: '/search',
-      queryParams: { category: 'Laptops' },
+      queryParams: { category: 'laptops' },
       img: '/assets/img/Icons_SVG/Laptop_Icon.svg',
       title: 'idealProduct.laptops',
       description: 'idealProduct.devices'
@@ -49,7 +48,7 @@ export class IdealProductComponent implements OnInit, AfterViewInit {
     {
       id: 5,
       link: '/search',
-      queryParams: { category: 'Audio' },
+      queryParams: { category: 'audio' },
       img: '/assets/img/Icons_SVG/Cornetas_Icon.svg',
       title: 'idealProduct.audio',
       description: 'idealProduct.devices'
@@ -57,7 +56,7 @@ export class IdealProductComponent implements OnInit, AfterViewInit {
     {
       id: 6,
       link: '/search',
-      queryParams: { category: 'Gaming' },
+      queryParams: { category: 'gaming' },
       img: '/assets/img/Icons_SVG/Gaming_Icon.svg',
       title: 'idealProduct.gaming',
       description: 'idealProduct.devices'
@@ -65,7 +64,7 @@ export class IdealProductComponent implements OnInit, AfterViewInit {
     {
       id: 7,
       link: '/search',
-      queryParams: { category: 'Tablets' },
+      queryParams: { category: 'tablets' },
       img: '/assets/img/Icons_SVG/Tablet_Icon.svg',
       title: 'idealProduct.tablets',
       description: 'idealProduct.devices'
@@ -73,7 +72,7 @@ export class IdealProductComponent implements OnInit, AfterViewInit {
     {
       id: 8,
       link: '/search',
-      queryParams: { category: 'Connectivity' },
+      queryParams: { category: 'connectivity' },
       img: '/assets/img/Icons_SVG/Conectividad_Icon.svg',
       title: 'idealProduct.connectivity',
       description: 'idealProduct.devices'
