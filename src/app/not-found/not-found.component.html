@@ -1,0 +1,30 @@
+<!-- header start -->
+<app-header></app-header>
+<!-- header end -->
+
+<main>
+  <!-- error area start -->
+  <section class="tp-error-area pt-110 pb-110">
+     <div class="container">
+        <div class="row justify-content-center">
+           <div class="col-xl-6 col-lg-8 col-md-10">
+              <div class="tp-error-content text-center">
+                 <div class="tp-error-thumb">
+                    <img src="/assets/img/error/error.png" alt="">
+                 </div>
+
+                 <h3 class="tp-error-title">{{ 'notFound.title' | translate }}</h3>
+                 <p>{{ 'notFound.message' | translate }}</p>
+
+                 <a routerLink="/" class="btn btn-primary">{{ 'notFound.backToHome' | translate }}</a>
+              </div>
+           </div>
+        </div>
+     </div>
+  </section>
+  <!-- error area end -->
+</main>
+
+<!-- footer start -->
+<app-footer-one [primary_style]="true"></app-footer-one>
+<!-- footer end -->

@@ -1,0 +1,835 @@
+@use '../utils' as *;
+/*---------------------------------
+    1.2 Common Classes
+---------------------------------*/
+
+li.item_selected a:before {
+	position: absolute;
+	opacity: 1 !important;
+	width: 100% !important;
+	height: 3.5px;
+	content: '';
+	background: darkblue;
+	z-index: 3;
+	left: 0px !important;
+	bottom: 0px;
+}
+
+/* Border X get width  */
+li.border_animated a:before {
+	position: absolute;
+	opacity: 0;
+	width: 0%;
+	height: 3.5px;
+	content: '';
+	background: darkblue;
+	transition: all 0.3s;
+	left: 0px;
+	bottom: 0px;
+}
+
+li.border_animated a:hover:before {
+	opacity: 1;
+	width: 100%;
+}
+
+
+.d-xs-none {
+	@media #{$xs, $sm} {
+		display: none !important;
+	}
+}
+.text-xs-center-original {
+
+	@media #{$xs} {
+		text-align: center !important;
+		width: 100%;
+	}
+}
+.text-xs-center {
+	@media #{$xs} {
+		margin-left: 0;
+		margin-right: 0;
+		padding-left: 0 !important;
+		padding-right: 0;
+		text-align: center !important;
+	}
+}
+
+.hero-img {
+	min-height: 40rem;
+	background-size: cover !important;
+
+	@media #{$lg} {
+		background-size: cover;
+		background-position-x: 80rem;
+	}
+
+	@media #{$md} {
+		background-size: cover;
+		background-position-x: 65rem;
+	}
+
+	@media #{$sm} {
+		background-size: cover;
+		background-position-x: 57rem;
+	}
+
+	@media #{$xs} {
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position-x: 80%;
+		background-position-y: 12rem !important;
+	}
+}
+
+
+.theme-title {
+	font-family: "Roboto", sans-serif !important;
+	font-style: normal;
+	font-weight: 700;
+
+	@media #{$lg} {
+		font-size: 3.5rem !important;
+	}
+
+	@media #{$md} {
+		font-size: 3.1rem !important;
+	}
+
+	@media #{$sm} {
+		font-size: 2.5rem !important;
+	}
+
+	@media #{$xs} {
+		text-align: center;
+		font-size: 2rem !important;
+	}
+}
+
+.theme-subtitle {
+	font-family: "Roboto", sans-serif !important;
+	font-style: normal;
+	font-weight: 700;
+
+	@media #{$lg} {
+		font-size: 1.5rem !important;
+	}
+
+	@media #{$md} {
+		font-size: 1.3rem !important;
+	}
+
+	@media #{$sm} {
+		font-size: 1rem !important;
+	}
+
+	@media #{$xs} {
+		text-align: center;
+		font-size: 1rem !important;
+	}
+}
+
+
+.text-container {
+	position: absolute;
+	top: 50%;
+	left: 25%;
+	transform: translate(-50%, -50%);
+	background-color: transparent;
+	padding: 20px;
+	border-radius: 10px;
+	max-width: 40%;
+	text-align: left;
+
+	& h1 {
+		line-height: 1;
+		color: var(--tp-theme-primary);
+		font-size: 4.5rem;
+	}
+
+	& h4 {
+		font-size: 1.2rem;
+		font-weight: 500;
+	}
+
+	@media #{$lg} {
+		left: 35%;
+		max-width: 40%;
+	}
+
+	@media #{$md} {
+		left: 40%;
+		max-width: 50%;
+	}
+
+	@media #{$sm} {
+		left: 40%;
+		max-width: 50%;
+	}
+
+	@media #{$xs} {
+		left: 50%;
+		top: 20%;
+		margin-left: 0 auto;
+		width: 100%;
+		max-width: 100%;
+	}
+}
+
+.th-color-secondary {
+	color: var(--tp-theme-secondary);
+}
+
+.th-bg-dark-blue {
+	background-color: rgb(21 23 73 /1);
+}
+
+.th-color-dark-blue {
+	color: rgb(21 23 73 /1);
+}
+
+.th-border-secondary {
+	border-color: var(--tp-theme-secondary);
+}
+
+.th-border-primary {
+	border: 10px var(--tp-theme-primary);
+}
+
+.th-color-primary {
+	color: var(--tp-theme-primary);
+}
+
+.th-bg-primary {
+	background-color: var(--tp-theme-primary);
+}
+
+.th-bg-interest {
+	background-color: #FF5B00;
+}
+
+.th-bg-light-silver {
+	background-color: #EFEFEF;
+}
+
+.th-bg-silver {
+	background-color: #E3E3E3;
+}
+
+.th-color-silver {
+	background-color: #E3E3E3;
+}
+
+.roboto-thin {
+	font-family: "Roboto", sans-serif !important;
+	font-weight: 100 !important;
+	font-style: normal !important;
+}
+
+.roboto-light {
+	font-family: "Roboto", sans-serif !important;
+	font-weight: 300 !important;
+	font-style: normal !important;
+}
+
+.roboto-regular {
+	font-family: "Roboto", sans-serif !important;
+	font-weight: 400 !important;
+	font-style: normal !important;
+}
+
+.roboto-regular-title {
+
+	font-family: "Roboto", sans-serif !important;
+	font-weight: 400;
+	font-size: 3rem;
+	font-style: normal;
+}
+
+.roboto-light-title {
+
+	font-family: "Roboto", sans-serif;
+	font-weight: 300;
+	font-size: 3rem;
+	font-style: normal;
+
+	@media #{$md} {
+		font-size: 2rem;
+	}
+
+	@media #{$sm} {
+		font-size: 2rem;
+	}
+
+	@media #{$xs} {
+		font-size: 2.5rem;
+	}
+
+	&-1 {
+		font-size: 4rem;
+		font-weight: 300;
+		font-style: normal;
+
+		@media #{$md} {
+			font-size: 3rem;
+		}
+
+		@media #{$sm} {
+			font-size: 2rem;
+		}
+
+		@media #{$xs} {
+			font-size: 2.5rem;
+		}
+	}
+
+	&-2 {
+		font-size: 4rem;
+		font-weight: 300;
+		font-style: normal;
+
+		@media #{$md} {
+			font-size: 3rem;
+		}
+
+		@media #{$sm} {
+			font-size: 3rem;
+		}
+
+		@media #{$xs} {
+			font-size: 2.5rem;
+		}
+	}
+
+	&-4 {
+		font-size: 4rem;
+		font-weight: 300;
+		font-style: normal;
+
+		@media #{$xl} {
+			font-size: 2.8rem;
+		}
+
+		@media #{$lg} {
+			font-size: 2.8rem;
+		}
+
+		@media #{$md} {
+			font-size: 3.5rem;
+		}
+
+		@media #{$sm} {
+			font-size: 3rem;
+		}
+
+		@media #{$xs} {
+			font-size: 2.5rem;
+		}
+	}
+}
+
+.roboto-medium {
+	font-family: "Roboto", sans-serif !important;
+	font-weight: 500 !important;
+	font-style: normal !important;
+}
+
+.roboto-bold {
+	font-family: "Roboto", sans-serif;
+	font-weight: 700;
+	font-style: normal;
+}
+
+.roboto-bold-super-title {
+
+	font-family: "Roboto", sans-serif;
+	font-weight: 700;
+	font-size: 3.5rem;
+	font-style: normal;
+	color: #151749;
+
+	&-1 {
+		@extend .roboto-bold-super-title;
+		font-size: 4rem;
+	}
+
+	@media #{$lg} {
+		font-size: 4rem;
+	}
+
+	@media #{$md} {
+		font-size: 3rem;
+	}
+
+	@media #{$sm} {
+		padding-left: 3rem;
+		padding-right: 3rem;
+		font-size: 3rem;
+	}
+
+	@media #{$xs} {
+		padding-left: 1rem;
+		padding-right: 1rem;
+		font-size: 3.5rem;
+	}
+}
+
+.roboto-bold-title {
+	font-family: "Roboto", sans-serif;
+	font-weight: 700;
+	font-size: 3rem;
+	font-style: normal;
+	color: #151749;
+
+	@media #{$lg} {
+		font-size: 3rem;
+	}
+
+	@media #{$md} {
+		font-size: 2rem;
+	}
+
+	@media #{$sm} {
+		font-size: 2rem;
+	}
+
+	@media #{$xs} {
+		font-size: 2.5rem;
+	}
+
+	&-1 {
+		font-size: 4rem;
+		font-weight: 700;
+		font-style: normal;
+
+		@media #{$lg} {
+			font-size: 3rem;
+		}
+
+		@media #{$md} {
+			font-size: 3rem;
+		}
+
+		@media #{$sm} {
+			font-size: 2rem;
+		}
+
+		@media #{$xs} {
+			font-size: 2.5rem;
+		}
+	}
+
+	&-2 {
+		font-size: 4rem;
+		font-weight: 700;
+		font-style: normal;
+
+		@media #{$lg} {
+			font-size: 3rem;
+		}
+
+		@media #{$md} {
+			font-size: 3rem;
+		}
+
+		@media #{$sm} {
+			font-size: 3rem;
+		}
+
+		@media #{$xs} {
+			font-size: 2rem;
+		}
+	}
+
+	&-4 {
+		font-size: 4rem;
+		font-weight: 700;
+		font-style: normal;
+
+		@media #{$xl} {
+			font-size: 2.8rem;
+		}
+
+		@media #{$lg} {
+			font-size: 2.8rem;
+		}
+
+		@media #{$md} {
+			font-size: 3.5rem;
+		}
+
+		@media #{$sm} {
+			font-size: 3rem;
+		}
+
+		@media #{$xs} {
+			font-size: 2.5rem;
+		}
+	}
+}
+
+.roboto-black {
+	font-family: "Roboto", sans-serif;
+	font-weight: 900;
+	font-style: normal;
+}
+
+.roboto-thin-italic {
+	font-family: "Roboto", sans-serif;
+	font-weight: 100;
+	font-style: italic;
+}
+
+.roboto-light-italic {
+	font-family: "Roboto", sans-serif;
+	font-weight: 300;
+	font-style: italic;
+}
+
+.roboto-regular-italic {
+	font-family: "Roboto", sans-serif;
+	font-weight: 400;
+	font-style: italic;
+}
+
+.roboto-medium-italic {
+	font-family: "Roboto", sans-serif;
+	font-weight: 500;
+	font-style: italic;
+}
+
+.roboto-bold-italic {
+	font-family: "Roboto", sans-serif;
+	font-weight: 700;
+	font-style: italic;
+}
+
+.roboto-black-italic {
+	font-family: "Roboto", sans-serif;
+	font-weight: 900;
+	font-style: italic;
+}
+
+.th-subtitle {
+	color: #151749;
+
+	@media(#{$xs}) {
+		padding: 0 !important;
+		margin: 0 !important;
+		text-align: center;
+	}
+}
+
+.text-theme-primary {
+	color: var(--tp-theme-primary);
+}
+
+.w-img {
+	& img {
+		width: 100%;
+	}
+}
+
+.m-img {
+	& img {
+		max-width: 100%;
+	}
+}
+
+.fix {
+	overflow: hidden
+}
+
+.clear {
+	clear: both;
+}
+
+.z-index-1 {
+	z-index: 1;
+}
+
+.z-index-11 {
+	z-index: 11;
+}
+
+.overflow-y-visible {
+	overflow-x: hidden;
+	overflow-y: visible;
+}
+
+.p-relative {
+	position: relative;
+}
+
+.p-absolute {
+	position: absolute;
+}
+
+.include-bg {
+	@include background();
+}
+
+
+// demo for method
+.demo {
+	@include tp-transition(color, .3s, linear);
+
+	@include tp-transition-mul((color .3s linear, transform .2s ease));
+
+	@include rtl {
+		margin-left: 0;
+		margin-right: 15px;
+	}
+
+	@include tp-root('div') {
+		img {
+			margin-left: 10px;
+		}
+	}
+
+	@include dark {
+		color: yellow;
+	}
+}
+
+.subscription-card {
+	margin: 0 auto;
+	border: 0;
+	border-radius: 10px;
+	max-width: 650px;
+}
+
+
+.th-input-icon-container {
+	width: 100%;
+	position: relative;
+
+	& input {
+		background: var(--tp-grey-5);
+		border: 1px solid rgba(1, 15, 28, 0.1);
+		height: 46px;
+		padding-left: 45px;
+		padding-right: 50px;
+
+		@include tp-placeholder {
+			color: var(--tp-text-1);
+		}
+
+		&:focus {
+			border-color: var(--tp-theme-secondary);
+		}
+	}
+
+	& button {
+		position: absolute;
+		width: 10px;
+		top: 57px;
+		left: 1rem;
+		opacity: 0.7;
+		@include transform(translateY(-50%));
+		font-size: 24px;
+
+		&:hover {
+			color: var(--tp-theme-secondary);
+		}
+
+		& svg {
+			@extend %tp-svg-y-3;
+			cursor: text;
+		}
+	}
+
+	&-2 {
+		@extend.th-input-icon-container;
+
+		& button {
+			position: absolute;
+			width: 10px;
+			top: 57px;
+			left: 1.5rem;
+			opacity: 0.7;
+			@include transform(translateY(-50%));
+			font-size: 24px;
+
+			&:hover {
+				color: var(--tp-theme-secondary);
+			}
+
+			& svg {
+				cursor: text;
+				@extend %tp-svg-y-3;
+			}
+		}
+
+		& .button-2 {
+			transition: none;
+			position: absolute;
+			width: 10px;
+			top: 57px;
+			left: 53%;
+			opacity: 0.7;
+			@include transform(translateY(-50%));
+			font-size: 24px;
+
+			&:hover {
+				color: var(--tp-theme-secondary);
+			}
+
+			& svg {
+				cursor: text;
+				@extend %tp-svg-y-3;
+			}
+
+			@media #{$xs} {
+				left: 1.5rem;
+				top: 85%;
+			}
+
+			@media #{$sm, $md, $lg, $xl} {
+				left: 55%;
+				top: 72%;
+			}
+		}
+	}
+}
+
+/*----------------------------------------
+    Body Overlay
+-----------------------------------------*/
+
+.body-overlay {
+	background-color: var(--tp-common-black);
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 9999;
+	left: 0;
+	opacity: 0;
+	visibility: hidden;
+	@include tp-transition();
+	display: none;
+
+	&:hover {
+		cursor: url('../../img/icon/cross-out.png'), pointer;
+	}
+}
+
+.body-overlay.opened {
+	opacity: .7;
+	visibility: visible;
+	display: block;
+}
+
+
+
+/* dropcap */
+.#{$theme-prifix}-dropcap {
+	&::first-letter {
+		font-size: 90px;
+		font-weight: 500;
+		float: left;
+		text-align: center;
+		color: var(--tp-common-black);
+		margin-right: 5px;
+		line-height: inherit;
+		text-transform: capitalize;
+	}
+}
+
+// for svg
+// on hover stroke animation
+// not checked
+.class {
+	stroke-dasharray: 189px, 191px;
+	stroke-dashoffset: 0px;
+}
+
+
+.#{$theme-prifix}-all-font-roboto {
+	& *:not(i) {
+		@extend %tp-ff-roboto;
+	}
+}
+
+/* gutter for x axis */
+.tp-gx-20 {
+	--bs-gutter-x: 20px;
+
+	@media #{$lg} {
+		--bs-gutter-x: 20px;
+	}
+
+	@media #{$md} {
+		--bs-gutter-x: 20px;
+	}
+
+	@media #{$sm} {
+		--bs-gutter-x: 15px;
+	}
+
+	@media #{$xs} {
+		--bs-gutter-x: 10px;
+	}
+
+	& [class*="col-"] {
+		padding-right: calc(var(--bs-gutter-x) * .5);
+		padding-left: calc(var(--bs-gutter-x) * .5);
+		margin-top: var(--bs-gutter-y);
+	}
+}
+
+/* gutter for x axis */
+.tp-gx-30 {
+	--bs-gutter-x: 30px;
+
+	@media #{$lg} {
+		--bs-gutter-x: 30px;
+	}
+
+	@media #{$md} {
+		--bs-gutter-x: 30px;
+	}
+
+	@media #{$sm} {
+		--bs-gutter-x: 15px;
+	}
+
+	@media #{$xs} {
+		--bs-gutter-x: 10px;
+	}
+
+	& [class*="col-"] {
+		padding-right: calc(var(--bs-gutter-x) * .5);
+		padding-left: calc(var(--bs-gutter-x) * .5);
+		margin-top: var(--bs-gutter-y);
+	}
+}
+
+/* gutter for x axis */
+.tp-gx-40 {
+	--bs-gutter-x: 40px;
+
+	@media #{$lg} {
+		--bs-gutter-x: 40px;
+	}
+
+	@media #{$md} {
+		--bs-gutter-x: 30px;
+	}
+
+	@media #{$sm} {
+		--bs-gutter-x: 30px;
+	}
+
+	@media #{$xs} {
+		--bs-gutter-x: 15px;
+	}
+
+	& [class*="col-"] {
+		padding-right: calc(var(--bs-gutter-x) * .5);
+		padding-left: calc(var(--bs-gutter-x) * .5);
+		margin-top: var(--bs-gutter-y);
+	}
+}

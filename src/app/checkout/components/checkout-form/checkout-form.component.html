@@ -1,0 +1,138 @@
+<section class="pb-80">
+    <div class="container">
+        <div class="card subscription-card p-5">
+            <div class="text-center pb-20">
+                <div class="container">
+                    <div class="row">
+                        <h3 class="th-subtitle" style="line-height: 1;">
+                            {{ tittle | translate }}
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <form [formGroup]="form" class="d-grid gap-3">
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <label for="nameInput" class="roboto-regular mb-1"> {{ 'checkout.name' | translate }} </label>
+                        <input id="nameInput" required formControlName="name" type="text" placeholder="Your name here" name="nameInput" class="rounded-1 roboto-light">
+                        <div *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)"
+                            class="text-red  mt-1 p-1" role="alert" style="color: #e73d4b">
+                            <div *ngIf="form.controls['name'].hasError('required')">
+                                Name is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="lastNameInput" class="roboto-regular mb-1"> {{ 'checkout.lastName' | translate }} </label>
+                        <input id="lastNameInput" type="text" formControlName="lastName" placeholder="Your last name here" name="lastNameInput" class="rounded-1 roboto-light">
+                        <div *ngIf="form.controls['lastName'].invalid && (form.controls['lastName'].dirty || form.controls['lastName'].touched)"
+                            class="text-red  mt-1 p-1" role="alert" style="color: #e73d4b">
+                            <div *ngIf="form.controls['lastName'].hasError('required')">
+                                Last name is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 form-group">
+                        <label for="companyInput" class="roboto-regular mb-1"> {{ 'checkout.company' | translate }} </label>
+                        <input id="companyInput" type="text" formControlName="company" placeholder="Your company name here" name="companyInput" class="rounded-1 roboto-light">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 form-group">
+                        <label for="regionInput" class="roboto-regular mb-1"> {{ 'checkout.region' | translate }} </label>
+                        <input id="regionInput" type="text" formControlName="region" placeholder="Your country here" name="regionInput" class="rounded-1 roboto-light">
+                        <div *ngIf="form.controls['region'].invalid && (form.controls['region'].dirty || form.controls['region'].touched)"
+                            class="text-red  mt-1 p-1" role="alert" style="color: #e73d4b">
+                            <div *ngIf="form.controls['region'].hasError('required')">
+                                Region is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-12 form-group">
+                        <label for="streetInput" class="roboto-regular mb-1"> {{ 'checkout.street' | translate }} </label>
+                        <input id="streetInput" type="text" formControlName="street" placeholder="Your street address here" name="streetInput" class="rounded-1 roboto-light">
+                        <div *ngIf="form.controls['street'].invalid && (form.controls['street'].dirty || form.controls['street'].touched)"
+                            class="text-red  mt-1 p-1" role="alert" style="color: #e73d4b">
+                            <div *ngIf="form.controls['street'].hasError('required')">
+                                Street is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 form-group">
+                        <label for="cityInput" class="roboto-regular mb-1"> {{ 'checkout.city' | translate }} </label>
+                        <input id="cityInput" type="text" formControlName="city" placeholder="Your city here" name="cityInput" class="rounded-1 roboto-light">
+                        <div *ngIf="form.controls['city'].invalid && (form.controls['city'].dirty || form.controls['city'].touched)"
+                            class="text-red  mt-1 p-1" role="alert" style="color: #e73d4b">
+                            <div *ngIf="form.controls['city'].hasError('required')">
+                                City is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <label for="stateInput" class="roboto-regular mb-1"> {{ 'checkout.state' | translate }} </label>
+                        <input id="stateInput" type="text" formControlName="state" placeholder="Your State here" name="stateInput" class="rounded-1 roboto-light">
+                        <div *ngIf="form.controls['state'].invalid && (form.controls['state'].dirty || form.controls['state'].touched)"
+                            class="text-red  mt-1 p-1" role="alert" style="color: #e73d4b">
+                            <div *ngIf="form.controls['state'].hasError('required')">
+                                State is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 form-group">
+                        <label for="zipInput" class="roboto-regular mb-1"> {{ 'checkout.zip' | translate }} </label>
+                        <input id="zipInput" type="text" formControlName="zip" placeholder="Your postal code here" name="zipInput" class="rounded-1 roboto-light">
+                        <div *ngIf="form.controls['zip'].invalid && (form.controls['zip'].dirty || form.controls['zip'].touched)"
+                            class="text-red  mt-1 p-1" role="alert" style="color: #e73d4b">
+                            <div *ngIf="form.controls['zip'].hasError('required')">
+                                Zip code is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 form-group">
+                        <label for="phoneInput" class="roboto-regular mb-1"> {{ 'checkout.phone' | translate }} </label>
+                        <input id="phoneInput" type="text" formControlName="phone" placeholder="Your phone number here" name="phoneInput" class="rounded-1 roboto-light">
+                        <div *ngIf="form.controls['phone'].invalid && (form.controls['phone'].dirty || form.controls['phone'].touched)"
+                            class="text-red  mt-1 p-1" role="alert" style="color: #e73d4b">
+                            <div *ngIf="form.controls['phone'].hasError('required')">
+                                Phone number is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 form-group">
+                        <label for="emailInput" class="roboto-regular mb-1"> {{ 'checkout.email' | translate }} </label>
+                        <input id="emailInput" type="text" formControlName="email" placeholder="Your email here" name="emailInput" class="rounded-1 roboto-light">
+                        <div *ngIf="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)"
+                            class="text-red  mt-1 p-1" role="alert" style="color: #e73d4b">
+                            <div *ngIf="form.controls['email'].hasError('required')">
+                                Email is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-12 form-group">
+                        <label for="notesInput" class="roboto-regular mb-1"> {{ 'checkout.notes' | translate }} </label>
+                        <textarea id="notesInput" type="text" formControlName="notes" placeholder="Ejm: Andrés" name="notesInput" class="rounded-1 roboto-light"></textarea>
+                    </div>
+                </div>
+                <!-- <button (click)="onSubmit()" class="btn btn-primary" type="submit">
+                    Confirmar Orden
+                </button> -->
+            </form>
+        </div>
+    </div>
+</section>

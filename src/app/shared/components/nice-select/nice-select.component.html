@@ -1,0 +1,20 @@
+<div
+  [ngClass]="['nice-select', className, open ? 'open' : '']"
+  tabindex="0"
+  (click)="toggleOpen()"
+  role="button"
+  class="rounded-3 "
+>
+  <span class="current roboto-light">{{ UtilsService.selectedSort() | translate }}</span>
+  <ul class="list" role="menubar" (click)="stopPropagation($event)">
+    <li
+      *ngFor="let item of options; let index = index"
+      class="option roboto-light"
+      [ngClass]="(item.value === current?.value ? 'selected focus' : '')"
+      (click)="currentHandler(item, index)"
+      role="menuitem"
+    >
+      {{ item.text | translate }}
+    </li>
+  </ul>
+</div>

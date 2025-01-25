@@ -1,0 +1,36 @@
+<div class="container p-5" style="height: 100%; overflow-y: auto;">
+
+  <div class="tp-product-details-thumb-wrapper tp-tab d-sm-flex ">
+    <nav>
+      <div
+      class="nav nav-tabs flex-sm-column"
+      id="productDetailsNavThumb"
+      role="tablist"
+      >
+      <button
+      *ngFor="let item of product?.productVariants; let i = index"
+      [class.active]="item.imgUrl === productService.activeImg"
+      (click)="productService.handleActiveVariant(item)"
+      type="button"
+      class="nav-link"
+      >
+      <img [src]="item.imgUrl" alt="nav-img" style="background-color: #F4F5F7;" />
+    </button>
+  </div>
+</nav>
+<div class="tab-content m-img w-100 h-100" id="productDetailsNavContent">
+  <div
+  class="tp-product-details-nav-main-thumb"
+  style="background-color: #f5f6f8; height: auto; display: flex; align-items: center; justify-content: center; overflow: hidden;"
+  >
+  <img [src]="productService.activeImg" alt="prd-image" style="width: auto; object-fit: contain;" />
+  <!-- <div *ngIf="product.videoId" class="tp-product-details-thumb-video">
+    <a (click)="utilsService.playVideo('B0WuqoXkJkY')" class="tp-product-details-thumb-video-btn cursor-pointer popup-video">
+      <i class="fas fa-play"></i>
+    </a>
+  </div> -->
+</div>
+  </div>
+</div>
+
+</div>

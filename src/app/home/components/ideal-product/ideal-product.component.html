@@ -1,0 +1,107 @@
+<div class="container mt-40">
+    <h3 class="ms-sm-3 th-subtitle">
+        {{ 'idealProduct.title' | translate }}
+    </h3>
+
+    <section class="tp-brand-area pt-25">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="tp-brand-slider p-relative">
+                    <div class="tp-brand-slider-active swiper-container">
+                        <div class="swiper-wrapper">
+
+                            <div *ngFor="let item of data" class="swiper-slide text-center">
+
+                                <div class="tp-ideal-item-2 w-img">
+                                    <div class="card flex-row py-5 px-3 mx-2" style="background-color: #EFEFEF; max-height: 100px;">
+                                        
+                                        <img class="card-img-left img-fluid align-self-center" 
+                                        style="width: 40px; object-fit: contain; height: 40px;" [src]="item.img" />
+
+                                        <div class="card-body h-100 align-self-center ">
+                                            <h6 class="roboto-regular m-0 p-0 " style="line-height: 1;">{{item.title | translate }}</h6>
+                                            <small class="card-text" style="line-height: 1;">{{item.description| translate }}</small>
+                                        </div>
+
+                                        <div class="tp-ideal-icon-2">
+                                            <a [routerLink]="[item.link]" [queryParams]="item.queryParams" class="popup-image">
+                                                <i class="fa-solid fa-link"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tp-brand-slider-arrow">
+                        <button class="tp-brand-slider-button-prev rounded-5">
+                            <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 1L1 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <button class="tp-brand-slider-button-next rounded-5">
+                            <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 1L7 7L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+<section class="tp-collection-area pt-50">
+    <div class="container px-0">
+       <div class="row gx-2 gy-2 gy-md-0">
+          <div class="col-xl-6 col-md-6">
+             <div class="grey-bg p-relative z-index-1 fix rounded tp-collection-item" style="min-height: 350px !important;">
+                <div class="tp-collection-thumb include-bg include-bg transition-3 ms-0 ps-0" 
+                style="background-image: url(../../../../assets/img/support_assets/Banner_Dispositivos.webp);
+                max-height: 350px !important;"></div>
+                <div class="tp-collection-content">
+                   <h1>
+                      <a style="cursor: default;">
+                        <span class="roboto-light-title">
+                            {{ 'collection.varietyIn' | translate }} <br> 
+                        </span>
+                      <span class="roboto-bold-title">
+                          {{ 'collection.devices' | translate }} <br>
+                          {{ 'collection.mobiles' | translate }}
+                      </span> 
+                    </a>
+                   </h1>
+                      <a [routerLink]="['/search']" [queryParams]="{category: 'mobile-devices'}" class="btn btn-primary" role="button">
+                            {{ 'collection.findYours' | translate }}
+                      </a>
+                </div>
+             </div>
+          </div>
+          <div class="col-xl-6 col-md-6">
+             <div class="grey-bg p-relative z-index-1 fix rounded tp-collection-item" style="min-height: 350px !important;">
+                <div class="tp-collection-thumb has-overlay include-bg transition-3 ms-0 ps-0" 
+                style="background-image: url(../../../../assets/img/support_assets/Banner_Airpods.webp);
+                max-height: 350px !important;">
+                </div>
+                <div class="tp-collection-content-1 text-end ">
+                   <h1>
+                      <a style="cursor: default;">
+                        <span class="roboto-light-title">
+                            {{ 'collection.fallInLoveWith' | translate }} <br> 
+                        </span>
+                        <span class="roboto-bold-title">
+                            {{ 'collection.sound' | translate }} <br>
+                            {{ 'collection.surround' | translate }} 
+                        </span>
+                    </a>
+                   </h1>
+                      <a [routerLink]="['/search']" [queryParams]="{category: 'audio'}" class="btn btn-primary"  role="button">
+                         {{ 'collection.findYours' | translate }}
+                      </a>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,64 @@
+<app-header></app-header>
+<main>
+   <section class="profile__area pt-60 pb-60">
+      <div class="container">
+         <div class="profile__inner p-relative">
+
+            <div class="row">
+               <div class="col-xxl-4 col-lg-4">
+                  <div class="profile__tab mr-40">
+                     <nav>
+                        <div class="nav nav-tabs tp-tab-menu flex-column" id="profile-tab" role="tablist">
+
+                           <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills flex-column"
+                              orientation="vertical">
+                              <li [ngbNavItem]="1">
+                                 <a ngbNavLink class="roboto-light" role="button">
+                                    <span><i class="fa-regular fa-user-pen"></i></span>Perfil
+                                 </a>
+                                 <ng-template ngbNavContent>
+                                    <app-profile-tab></app-profile-tab>
+                                 </ng-template>
+                              </li>
+
+                              <li [ngbNavItem]="2">
+                                 <a ngbNavLink class="roboto-light" role="button"> 
+                                    <span><i class="fa-light fa-clipboard-list-check"></i></span> Mis Órdenes   
+                                 </a>
+                                 <ng-template ngbNavContent>
+                                    <app-orders-tab></app-orders-tab>
+                                 </ng-template>
+                              </li>
+
+                              <li [ngbNavItem]="3">
+                                 <a ngbNavLink class="roboto-light" role="button"> 
+                                    <span><i class="fa-light fa-regular fa-lock"></i></span> Cambiar Contraseña   
+                                 </a>
+                                 <ng-template ngbNavContent>
+                                    <app-internal-restore-password-tab></app-internal-restore-password-tab>
+                                 </ng-template>
+                              </li>
+                           </ul>
+
+
+                        </div>
+                     </nav>
+                  </div>
+               </div>
+
+               <div class="col-xxl-8 col-lg-8">
+                  <div class="profile__tab-content">
+                     <div class="tab-content" id="profile-tabContent">
+                        <div [ngbNavOutlet]="nav"></div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            
+         </div>
+      </div>
+   </section>
+
+
+</main>
+<app-footer-one></app-footer-one>

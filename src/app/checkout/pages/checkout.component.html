@@ -1,0 +1,23 @@
+<!-- header start -->
+<app-header [showSecondNavbar]="false"></app-header>
+<!-- header end -->
+
+<main class="container-fluid" style="background-color: #EFF1F5;">
+    <!-- checkout area start -->
+    <div class="container">
+        <div class="row pt-40">
+            <div class="col-6">
+                <app-checkout-form tittle="checkout.BillingDetails"></app-checkout-form>
+            </div>
+            <div class="col-6">
+                <app-checkout-summary tittle="checkout.Summary"></app-checkout-summary>
+            </div>
+        </div>
+    </div>
+    <!-- checkout area end -->
+</main>
+
+
+<!-- footer start -->
+<app-footer-one [primary_style]="true"></app-footer-one>
+<!-- footer end -->

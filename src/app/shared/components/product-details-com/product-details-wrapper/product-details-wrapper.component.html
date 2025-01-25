@@ -1,0 +1,164 @@
+<div class="container p-5 align-content-center h-100 overflow-auto">
+  <div class="tp-product-details-wrapper">
+    <h3 class="tp-product-details-title">{{ product.name }}</h3>
+
+    <!-- inventory details -->
+    <div class="tp-product-details-inventory d-flex align-items-center mb-10">
+      <div class="tp-product-details-stock mb-10">
+        <span>{{ product.status }}</span>
+      </div>
+      <div class="tp-product-details-rating-wrapper d-flex align-items-center mb-10">
+        <div class="tp-product-details-rating">
+          <ng-container *ngFor="let i of [1,2,3,4,5]">
+            <span>
+              <i class="fa-solid fa-star" [style.color]="productService.getStarRating(i, product)">
+              </i>
+            </span>
+          </ng-container>
+        </div>
+        <div class="tp-product-details-reviews">
+          <span>({{ product.reviews.length }} Reviews)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-wrapper overflow-auto mb-2" [style]="textMore ? 'height: 90px;' : 'height: auto'">
+      <p class="p-0" style="text-overflow: ellipsis;">
+        {{ !textMore && product.description.length > 100 ? (product.description.substring(0, 100) + '...') : product.description }}
+        <ng-container *ngIf="product.description.length > 100 ">
+          <strong class="cursor-pointer" (click)="handleTextToggle()">{{ textMore ? 'See less' : 'See more' }}</strong>
+        </ng-container>
+      </p>
+    </div>
+
+
+      <!-- price -->
+      <div class="tp-product-details-price-wrapper mb-2">
+        <div *ngIf="productService.selectedVariant && productService.selectedStorage && productService.selectedVariant.offer">
+          <span class="tp-product-details-price old-price">${{ productService.selectedStorage.price }}</span>
+          <span class="tp-product-details-price new-price">
+            ${{ (productService.selectedStorage.price - (productService.selectedStorage.price * productService.selectedVariant.offer.discount) / 100).toFixed(2) }}
+          </span>
+        </div>
+
+    <!-- variations -->
+    <div class="tp-product-details-variation">
+      <div class="tp-product-details-variation-item">
+
+
+        <div *ngIf="productService.selectedVariant && !productService.selectedStorage && productService.selectedVariant.offer">
+          <span class="tp-product-details-price old-price">${{ productService.selectedVariant.price }}</span>
+          <span class="tp-product-details-price new-price">
+            ${{ (productService.selectedVariant.price - (productService.selectedVariant.price * productService.selectedVariant.offer.discount) / 100).toFixed(2) }}
+          </span>
+        </div>
+
+        <span *ngIf="productService.selectedVariant && productService.selectedStorage && !productService.selectedVariant.offer" class="tp-product-details-price">
+          ${{ productService.selectedStorage.price.toFixed(2) }}
+        </span>
+
+        <span *ngIf="productService.selectedVariant && !productService.selectedStorage && !productService.selectedVariant.offer" class="tp-product-details-price">
+          ${{ productService.selectedVariant.price.toFixed(2) }}
+        </span>
+      </div>
+        <!-- Storage -->
+         
+        <h4 class="tp-product-details-variation-title">Storage:</h4>
+        <div class="tp-product-details-variation-list d-flex flex-row">
+          <button
+            *ngFor="let item of productService.selectedVariant?.storageOptions; let i = index"
+            [class.activeStorage]="item.storage == productService.selectedStorage?.storage"
+            (click)="productService.handleSelectedStorage(item)"
+            type="button" 
+            class="btn rounded w-auto me-2 d-flex align-items-center justify-content-center"
+          >
+            <span [ngClass]="productService.selectedStorage?.storage == item.storage ? 'text-light' : 'text-dark'">{{item.storage}}</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- product countdown start -->
+    <!-- <div *ngIf="product?.offerDate?.endDate">
+      <div class="tp-product-details-countdown d-flex align-items-center justify-content-between flex-wrap mt-25 mb-25">
+      <h4 class="tp-product-details-countdown-title">
+        <i class="fa-solid fa-fire-flame-curved"></i> Flash Sale end in:
+      </h4> -->
+      <!-- <div
+        class="tp-product-details-countdown-time"
+      >
+        <app-countdown-timer [date]="product.offerDate?.endDate!"></app-countdown-timer>
+      </div> -->
+    <!-- </div>
+    </div> -->
+    <!-- product countdown end -->
+
+    <!-- actions -->
+    <div class="tp-product-details-action-wrapper">
+      <h3 class="tp-product-details-action-title">Quantity</h3>
+      <div class="tp-product-details-action-item-wrapper d-flex align-items-center">
+         <div class="tp-product-details-quantity">
+            <div class="tp-product-quantity mb-15 mr-15">
+               <span (click)="cartService.decrement()" class="tp-cart-minus">
+                  <svg width="11" height="2" viewBox="0 0 11 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M1 1H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+               </span>
+               <input class="tp-cart-input" type="text" [value]="cartService.orderQuantity" disabled>
+               <span (click)="cartService.increment()" class="tp-cart-plus">
+                  <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path d="M1 6H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                     <path d="M5.5 10.5V1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+               </span>
+            </div>
+         </div>
+         <div class="tp-product-details-add-to-cart mb-15 w-100">
+            <button (click)="cartService.addCartProduct(product, productService.selectedVariant, productService.selectedStorage, cartService.orderQuantity)" 
+            class="roboto-regular tp-logout-btn rounded-3 text-xs-center-original w-100 py-2 w-100 ">Agregar al Carrito</button>
+         </div>
+      </div>
+      <a [routerLink]="['/']" class="roboto-regular tp-save-btn rounded-3 text-xs-center-original w-100 py-2">Comprar Ahora</a>
+   </div>
+
+   <div>
+     <div class="tp-product-details-action-sm">
+       <div class="tp-product-details-query">
+         <div class="tp-product-details-query-item d-flex align-items-center">
+             <span>Category:  </span>
+             <p>{{product.category}}</p>
+         </div>
+         <div class="tp-product-details-query-item d-flex align-items-center">
+          <span>Tags: </span>
+          <p>
+            {{ product.tags | formatTags }}
+          </p>
+        </div>
+        
+       </div>
+     </div>
+
+     <div>
+       <!-- <div class="tp-product-details-social">
+         <span>Share:</span>
+         <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+         <a href="#"><i class="fa-brands fa-twitter"></i></a>
+         <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+         <a href="#"><i class="fa-brands fa-vimeo-v"></i></a>
+       </div> -->
+       <div class="tp-product-details-msg mb-15">
+         <ul>
+           <li>30 days easy returns</li>
+           <li>Order yours before 2.30pm for same day dispatch</li>
+         </ul>
+       </div>
+       <!-- <div class="tp-product-details-payment d-flex align-items-center flex-wrap justify-content-between">
+         <p>Guaranteed safe <br> & secure checkout</p>
+         <img src="/assets/img/product/icons/payment-option.png" alt="">
+       </div> -->
+     </div>
+   </div>
+
+  </div>
+</div>
