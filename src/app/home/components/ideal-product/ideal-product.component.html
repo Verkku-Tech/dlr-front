@@ -61,7 +61,7 @@
                 max-height: 350px !important;"></div>
                 <div class="tp-collection-content">
                    <h1>
-                      <a [routerLink]="['/']">
+                      <a style="cursor: default;">
                         <span class="roboto-light-title">
                             {{ 'collection.varietyIn' | translate }} <br> 
                         </span>
@@ -71,7 +71,7 @@
                       </span> 
                     </a>
                    </h1>
-                      <a [routerLink]="['/']" class="btn btn-primary" role="button">
+                      <a [routerLink]="['/search']" [queryParams]="{category: 'mobile-devices'}" class="btn btn-primary" role="button">
                             {{ 'collection.findYours' | translate }}
                       </a>
                 </div>
@@ -85,7 +85,7 @@
                 </div>
                 <div class="tp-collection-content-1 text-end ">
                    <h1>
-                      <a [routerLink]="['/']">
+                      <a style="cursor: default;">
                         <span class="roboto-light-title">
                             {{ 'collection.fallInLoveWith' | translate }} <br> 
                         </span>
@@ -95,7 +95,7 @@
                         </span>
                     </a>
                    </h1>
-                      <a [routerLink]="['/']" class="btn btn-primary"  role="button">
+                      <a [routerLink]="['/search']" [queryParams]="{category: 'audio'}" class="btn btn-primary"  role="button">
                          {{ 'collection.findYours' | translate }}
                       </a>
                 </div>

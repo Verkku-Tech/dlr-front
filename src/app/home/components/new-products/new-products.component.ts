@@ -7,7 +7,7 @@ import { IBrand } from '../../../shared/interfaces/brand.interface';
 import { Autoplay, Navigation } from 'swiper/modules';
 import Swiper from 'swiper';
 import { TranslateService } from '@ngx-translate/core';
-import { ProductParameters } from '../../../shared/interfaces/product-parameters.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-products',
@@ -20,6 +20,7 @@ export class NewProductsComponent implements AfterViewInit, OnInit {
   public productService: ProductService = inject(ProductService)
   public utilsService: UtilsService = inject(UtilsService)
   public translateService: TranslateService = inject(TranslateService)
+  public router: Router = inject(Router)
 
   public brands: IBrand[] = brands_data;
   public activeTab = 'Todo';
@@ -45,6 +46,11 @@ export class NewProductsComponent implements AfterViewInit, OnInit {
 
     this.filteredProducts = this.getFilteredProducts()
   }
+  
+  goToBrand(brandName: string) {
+    console.log('redirect', brandName)
+    this.router.navigate(['/search'], { queryParams: { brand: brandName.toLowerCase().replace(" ","-") }});
+  }
 
   handleActiveTab(tab: string): void {
     this.activeTab = tab;
@@ -55,16 +61,45 @@ export class NewProductsComponent implements AfterViewInit, OnInit {
   filteredProducts = this.getFilteredProducts();
 
   getFilteredProducts(): IProduct[] {
-    if (this.activeTab === 'Todo') {
-      return [...this.productService.products].slice(0, 10);
-    } else if (this.activeTab === 'Dispositivos Móviles') {
-      return [...this.productService.products].filter((product) => product.featured);
-    } else if (this.activeTab === 'Audio') {
-      return [...this.productService.products]
-        // .sort((a, b) => (b.sellCount ?? 0) - (a.sellCount ?? 0))
-        .slice(0, 8);
-    } else {
-      return [];
+    const products = [...this.productService.products];
+    
+    const mobileDevices = ['smartphones', 'tablets'];
+    const audioDevices = ['headphones', 'audio'];
+    const laptopDevices = ['laptops'];
+    const gamingDevices = ['gaming', 'laptops'];
+    const connectivityDevices = ['connectivity'];
+
+    switch(this.activeTab) {
+      case 'Todo':
+        return products.slice(0, 10);
+        
+      case 'Dispositivos Móviles':
+        return products.filter(product => 
+          mobileDevices.includes(product.category?.toLowerCase())
+        );
+        
+      case 'Audio':
+        return products.filter(product =>
+          audioDevices.includes(product.category?.toLowerCase())
+        );
+        
+      case 'Laptops':
+        return products.filter(product =>
+          laptopDevices.includes(product.category?.toLowerCase())
+        );
+        
+      case 'Gaming':
+        return products.filter(product =>
+          gamingDevices.includes(product.category?.toLowerCase())
+        );
+        
+      case 'Conectividad':
+        return products.filter(product =>
+          connectivityDevices.includes(product.category?.toLowerCase())
+        );
+        
+      default:
+        return products;
     }
   }
 
