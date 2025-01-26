@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { IProduct, IProductCart, ProductVariant, StorageOption} from '../interfaces/product.interface';
+import { IProduct, IProductCart, ProductVariant, StorageOption } from '../interfaces/product.interface';
 import { ProductService } from './product.service';
 
 const state = {
@@ -13,7 +13,7 @@ const state = {
 export class CartService {
   public orderQuantity: number = 1;
   public isCartOpen: boolean = false;
-  
+
   constructor(
     private toastrService: ToastrService,
     private productService: ProductService
@@ -23,22 +23,33 @@ export class CartService {
     return state.cart_products;
   }
 
-  handleOpenCartSidebar () {
+  handleOpenCartSidebar() {
     this.isCartOpen = !this.isCartOpen
   }
 
+  addCartProductFromCart(item: IProductCart) {
+    const exists = state.cart_products.find((i: IProductCart) => 
+      i.id === item.id && 
+      i.sku === item.sku &&
+      (!item.storage || i.storage === item.storage)
+    );
+    if (exists) {
+      exists.orderQuantity += 1;
+      localStorage.setItem("cart_products", JSON.stringify(state.cart_products));
+    }
+  }
   // add_cart_product
   addCartProduct(
-    payload: IProduct, 
-    productVariant: ProductVariant | undefined, 
+    payload: IProduct,
+    productVariant: ProductVariant | undefined,
     storageOption: StorageOption | undefined,
     orderQuantity: number = 1,
-    showMsg: boolean | null = true  
+    showMsg: boolean | null = true
   ) {
 
-    if(!productVariant || !storageOption){
+    if (!productVariant || !storageOption) {
       console.error('You must select a product variant and the storage')
-      return 
+      return
     }
 
     // FIXME: fix statuses
@@ -47,7 +58,7 @@ export class CartService {
     // }
 
     const item: IProductCart = {
-      id: payload.id ,
+      id: payload.id,
       name: payload.name,
       variant: productVariant.name,
       orderQuantity,
@@ -60,12 +71,12 @@ export class CartService {
 
     const exists: IProductCart | undefined = state.cart_products.find((i: IProductCart) => i.id === payload.id && i.sku === productVariant.sku);
 
-    if(exists) {
-      
-      if(exists.storage && exists.storage == storageOption.storage) {
+    if (exists) {
+
+      if (exists.storage && exists.storage == storageOption.storage) {
         exists.orderQuantity += orderQuantity
       }
-      else{
+      else {
         state.cart_products.push(item);
       }
     }
@@ -73,13 +84,13 @@ export class CartService {
       state.cart_products.push(item);
     }
 
-    if(showMsg)
+    if (showMsg)
       this.toastrService.success(`${payload.name} added to cart`);
     localStorage.setItem("cart_products", JSON.stringify(state.cart_products));
-    
+
   };
 
-// total price quantity
+  // total price quantity
   public totalPriceQuantity() {
     return state.cart_products.reduce(
       (cartTotal: { total: number; quantity: number }, cartItem: IProductCart) => {
@@ -87,7 +98,7 @@ export class CartService {
 
         if (typeof orderQuantity !== undefined) {
           if (offer && offer.discount > 0) {
-            
+
             const itemTotal = (price - (price * offer.discount) / 100) * orderQuantity;
             cartTotal.total += itemTotal;
           } else {
@@ -105,7 +116,22 @@ export class CartService {
       }
     );
   };
+  public subTotalFull() {
+    return state.cart_products.reduce((total: number, item: IProductCart) => {
+      const itemTotal = item.price * item.orderQuantity;
+      return total + itemTotal;
+    }, 0);
+  }
 
+  public totalDiscount() {
+    return state.cart_products.reduce((total: number, item: IProductCart) => {
+      if (item.offer && item.offer.discount > 0) {
+        const discountAmount = (item.price * item.offer.discount / 100) * item.orderQuantity;
+        return total + discountAmount;
+      }
+      return total;
+    }, 0);
+  }
 
   // quantity increment
   increment() {
@@ -122,17 +148,22 @@ export class CartService {
 
   // quantityDecrement
   quantityDecrement(payload: IProductCart) {
-    state.cart_products.map((item: IProductCart) => {
-      if (item.id === payload.id) {
-        if (typeof item.orderQuantity !== "undefined") {
-          if (item.orderQuantity > 1) {
-            item.orderQuantity = item.orderQuantity - 1;
-            this.toastrService.info(`Decrement Quantity For ${item.name}`);
+    if (payload.orderQuantity === 1) {
+      this.removeCartProduct(payload)
+    }
+    else {
+      state.cart_products.map((item: IProductCart) => {
+        if (item.id === payload.id) {
+          if (typeof item.orderQuantity !== "undefined") {
+            if (item.orderQuantity > 1) {
+              item.orderQuantity = item.orderQuantity - 1;
+            }
           }
         }
-      }
-      return { ...item };
-    });
+        return { ...item };
+      });
+      this.toastrService.info(`Decrement Quantity For ${payload.name}`);
+    }
     localStorage.setItem("cart_products", JSON.stringify(state.cart_products));
   };
 
@@ -149,7 +180,7 @@ export class CartService {
       }
     );
 
-    this.toastrService.error(`${payload.name} remove to cart`);
+    this.toastrService.error(`${payload.name} removed from cart`);
     localStorage.setItem("cart_products", JSON.stringify(state.cart_products));
   };
 
@@ -159,7 +190,6 @@ export class CartService {
     //   "Are you sure deleted your all cart items ?"
     // );
     // if (confirmMsg) {
-    //   state.cart_products = [];
     // }
     state.cart_products = [];
     localStorage.setItem("cart_products", JSON.stringify(state.cart_products));

@@ -86,7 +86,7 @@
         <span>${{ cartService.totalPriceQuantity().total.toFixed(2) }}</span>
       </div>
       <div class="cartmini__checkout-btn">
-        <a routerLink="/pages/cart" (click)="cartService.handleOpenCartSidebar()" class="roboto-regular tp-logout-btn rounded-3 text-xs-center-original w-100 py-2 w-100 mb-2">Ver carrito</a>
+        <a routerLink="/cart" (click)="cartService.handleOpenCartSidebar()" class="roboto-regular tp-logout-btn rounded-3 text-xs-center-original w-100 py-2 w-100 mb-2">Ver carrito</a>
         <a routerLink="/checkout" (click)="cartService.handleOpenCartSidebar()" class="roboto-regular tp-save-btn rounded-3 text-xs-center-original w-100 py-2">Checkout</a>
       </div>
     </div>

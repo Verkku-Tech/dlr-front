@@ -195,6 +195,20 @@
         "seeMore": "See More",
         "seeLess": "See Less"
       }
+    },
+    "CART": {
+      "EMPTY_CART": "Your cart is empty",
+      "SHOP_NOW": "Continue shopping",
+      "PRODUCT": "Product",
+      "PRICE": "Price",
+      "QUANTITY": "Quantity",
+      "CLEAR_CART": "Clear Cart",
+      "SUMMARY": "Summary",
+      "DETAILS": "Details",
+      "SUBTOTAL": "Subtotal",
+      "DISCOUNT": "Discount",
+      "TOTAL": "Total",
+      "CHECKOUT": "Checkout"
     }
 }
 
