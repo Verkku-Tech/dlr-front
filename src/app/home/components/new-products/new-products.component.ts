@@ -110,6 +110,8 @@ export class NewProductsComponent implements AfterViewInit, OnInit {
       autoplay: {
         delay: 1500,
         disableOnInteraction: true,
+        pauseOnMouseEnter: true,
+        stopOnLastSlide: false
       },
       loop: true,
       spaceBetween: 0,

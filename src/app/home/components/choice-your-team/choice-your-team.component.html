@@ -5,10 +5,10 @@
             style="min-height: 200px;">
             <div class="card-footer row th-bg-silver text-center pt-30">
                 <div class="col-sm-6 mb-3">
-                    <button class="btn btn-light mx-5 py-3 roboto-medium">{{'choiceYourTeam.samsungDevices' | translate}}</button>
+                    <a role="button" [routerLink]="['search']" [queryParams]="{ brand:'samsung' }" class="btn btn-light mx-5 py-3 roboto-medium">{{'choiceYourTeam.samsungDevices' | translate}}</a>
                 </div>
                 <div class="col-sm-6 mb-3">
-                    <button class="btn btn-light mx-5 py-3 roboto-medium">{{'choiceYourTeam.appleDevices' | translate}}</button>
+                    <a role="button" [routerLink]="['search']" [queryParams]="{ brand:'apple' }" class="btn btn-light mx-5 py-3 roboto-medium">{{'choiceYourTeam.appleDevices' | translate}}</a>
                 </div>
             </div>
         </div>

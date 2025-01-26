@@ -17,13 +17,13 @@
       <div *ngIf="cartService.getCartProducts().length > 0" class="cartmini__widget">
         <div *ngFor="let item of cartService.getCartProducts()" class="cartmini__widget-item">
           <div class="cartmini__thumb">
-            <a [routerLink]="['/shop/shop-details', item.id]">
+            <a [routerLink]="['/product', item.id]">
               <img [src]="item.imgUrl" alt="cart-img" width="70" height="60" />
             </a>
           </div>
           <div class="cartmini__content">
             <h5 class="m-0">
-              <a class="roboto-regular" style="font-size: medium;" [routerLink]="['/shop/shop-details', item.id]">{{ item.name }}</a> 
+              <a class="roboto-regular" style="font-size: medium;" [routerLink]="['/product', item.id]">{{ item.name }}</a> 
             </h5>
             <p>
               {{item.variant}}

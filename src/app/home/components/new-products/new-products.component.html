@@ -89,22 +89,24 @@
       <div class="row">
           <div class="col-xl-12">
               <div class="tp-brand-slider p-relative">
+                <div class="swiper-brands">
                   <div class="tp-brand-1-slider-active swiper-container">
-                      <div class="swiper-wrapper" style="max-height: 100px !important;">
-
+                    <div class="swiper-wrapper" style="max-height: 100px !important;">
+                      
                           <div *ngFor="let item of brands" class="swiper-slide text-center me-4 cursor-pointer" (click)="goToBrand(item.name)">
                           
                               <div class="tp-ideal-item-2 w-img" >
-                                  <div class="card p-0" style=" height: 80px;">
-                                     <img class="px-2 py-2 object-fit-contain w-100 bg-transparent" style="width: 80px; height:80px;" [src]="item.logo" />
-                                  </div>
+                                <div class="card p-0" style=" height: 80px;">
+                                  <img class="px-2 py-2 object-fit-contain w-100 bg-transparent" style="width: 80px; height:80px;" [src]="item.logo" />
+                                </div>
                               </div>
                           </div>
+                        </div>
+                        
                       </div>
-                      
+                    </div>
                   </div>
-              </div>
-          </div>
+                </div>
       </div>
   </section>
     </div>

@@ -46,7 +46,6 @@ export class CartService {
     //   this.toastrService.error(`Out of stock ${payload.name}`);
     // }
 
-
     const item: IProductCart = {
       id: payload.id ,
       name: payload.name,
