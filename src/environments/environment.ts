@@ -1,5 +1,4 @@
 export const environment = {
-    production: true, 
-    baseUrl: 'https://qadlr-api.onrender.com/api',
-    apiKey: 'AIzaSyCs4ZH8FlBcxkHD6nLjDQBD5z07xaDRO2A'
+    production: process.env['NG_APP_PRODUCTION'], 
+    baseUrl: process.env['NG_APP_BASE_URL'],
 };
