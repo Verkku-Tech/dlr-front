@@ -3,7 +3,7 @@
     <div class="cartmini__top-wrapper">
       <div class="cartmini__top p-relative">
         <div class="cartmini__top-title">
-          <h4>Carrito de Compras</h4>
+          <h4>{{ 'CART.SHOPPING_CART' | translate }}</h4>
         </div>
         <div class="cartmini__close">
           <button (click)="cartService.handleOpenCartSidebar()" type="button" class="cartmini__close-btn cartmini-close-btn">
@@ -49,24 +49,6 @@
               
 
             </p>
-            <div class="cartmini__price-wrapper">
-              
-              <!-- FIXME: -->
-              <!-- <span *ngIf="item.productVariants[0]?.offer?.discount" class="cartmini__price">
-                {{
-                  (
-                    (productService.getDefaultPrice(item) - (productService.getDefaultPrice(item) * (item.productVariants[0].offer?.discount ?? 0)) / 100) * item.orderQuantity
-                  ).toFixed(2)
-                }}
-              </span> -->
-
-              <!-- FIXME: -->
-              <!-- <span *ngIf="!item.productVariants[0]?.offer?.discount && item.orderQuantity" class="cartmini__price">
-                ${{ (productService.getDefaultPrice(item) * item.orderQuantity).toFixed(2) }}
-              </span> -->
-              
-              
-            </div>
           </div>
           <a (click)="cartService.removeCartProduct(item)" class="cartmini__del cursor-pointer">
             <i class="fa-regular fa-xmark"></i>
@@ -75,19 +57,19 @@
       </div>
       <!-- if no item in cart  -->
       <div *ngIf="cartService.getCartProducts().length === 0" class="cartmini__empty text-center">
-        <img src="/assets/img/product/cartmini/empty-cart.png" alt="empty-cart-img" />
-        <p>Tu carrito está vacio</p>
-        <a routerLink="/" (click)="cartService.handleOpenCartSidebar()" class="roboto-regular tp-save-btn rounded-3 text-xs-center-original w-75 py-2">Comprar</a>
+        <img src="/assets/img/product/cartmini/empty-cart.png" alt="{{ 'CART.EMPTY_CART_IMG_ALT' | translate }}" />
+        <p>{{ 'CART.EMPTY_CART_MESSAGE' | translate }}</p>
+        <a routerLink="/search" (click)="cartService.handleOpenCartSidebar()" class="roboto-regular tp-save-btn rounded-3 text-xs-center-original w-75 py-2">{{ 'CART.SHOP_NOW' | translate }}</a>
       </div>
     </div>
     <div *ngIf="cartService.getCartProducts().length > 0" class="cartmini__checkout">
       <div class="cartmini__checkout-title mb-30">
-        <h4>Subtotal:</h4>
+        <h4>{{ 'CART.SUBTOTAL' | translate }}:</h4>
         <span>${{ cartService.totalPriceQuantity().total.toFixed(2) }}</span>
       </div>
       <div class="cartmini__checkout-btn">
-        <a routerLink="/cart" (click)="cartService.handleOpenCartSidebar()" class="roboto-regular tp-logout-btn rounded-3 text-xs-center-original w-100 py-2 w-100 mb-2">Ver carrito</a>
-        <a routerLink="/checkout" (click)="cartService.handleOpenCartSidebar()" class="roboto-regular tp-save-btn rounded-3 text-xs-center-original w-100 py-2">Checkout</a>
+        <a routerLink="/cart" (click)="cartService.handleOpenCartSidebar()" class="roboto-regular tp-logout-btn rounded-3 text-xs-center-original w-100 py-2 w-100 mb-2">{{ 'CART.VIEW_CART' | translate }}</a>
+        <a routerLink="/checkout" (click)="cartService.handleOpenCartSidebar()" class="roboto-regular tp-save-btn rounded-3 text-xs-center-original w-100 py-2">{{ 'CART.CHECKOUT' | translate }}</a>
       </div>
     </div>
   </div>

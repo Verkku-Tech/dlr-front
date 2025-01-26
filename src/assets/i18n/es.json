@@ -202,7 +202,6 @@
     },
     "CART": {
       "EMPTY_CART": "Tu carrito está vacío",
-      "SHOP_NOW": "Continuar comprando",
       "PRODUCT": "Producto",
       "PRICE": "Precio",
       "QUANTITY": "Cantidad",
@@ -212,6 +211,11 @@
       "SUBTOTAL": "Subtotal",
       "DISCOUNT": "Descuento",
       "TOTAL": "Total",
-      "CHECKOUT": "Finalizar compra"
+      "CHECKOUT": "Finalizar compra",
+      "SHOPPING_CART": "Carrito de Compras",
+      "EMPTY_CART_MESSAGE": "Tu carrito está vacío",
+      "EMPTY_CART_IMG_ALT": "Carrito vacío",
+      "SHOP_NOW": "Comprar",
+      "VIEW_CART": "Ver carrito"
     }
 }

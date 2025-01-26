@@ -208,7 +208,11 @@
       "SUBTOTAL": "Subtotal",
       "DISCOUNT": "Discount",
       "TOTAL": "Total",
-      "CHECKOUT": "Checkout"
+      "CHECKOUT": "Checkout",
+      "SHOPPING_CART": "Shopping Cart",
+      "EMPTY_CART_MESSAGE": "Your cart is empty",
+      "EMPTY_CART_IMG_ALT": "Empty cart",
+      "VIEW_CART": "View Cart"
     }
 }
 
