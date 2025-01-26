@@ -1,0 +1,131 @@
+<app-header [showSecondNavbar]="false"></app-header>
+
+<!-- cart area start -->
+<section class="tp-cart-area mt-50 pb-60">
+    <div class="container">
+      <div *ngIf="cartService.getCartProducts().length === 0" class="text-center pt-50">
+        <h3>{{ 'CART.EMPTY_CART' | translate }}</h3>
+        <a routerLink="/search" 
+           class="roboto-regular tp-save-btn rounded-3 text-xs-center-original mt-2 py-2 px-4 d-inline-block">{{ 'CART.SHOP_NOW' | translate }}</a>
+      </div>
+      <div *ngIf="cartService.getCartProducts().length > 0" class="row">
+        <div class="col-xl-9 col-lg-8">
+          <div class="tp-cart-list mb-25 mr-30">
+            <div style="max-height: 500px; overflow-y: auto;">
+              <table style="width: 100%;">
+                <thead style="position: sticky; top: 0; background: white; z-index: 1;">
+                  <tr>
+                    <th colspan="2" class="tp-cart-header-product">{{ 'CART.PRODUCT' | translate }}</th>
+                    <th class="tp-cart-header-price">{{ 'CART.PRICE' | translate }}</th>
+                    <th class="tp-cart-header-quantity">{{ 'CART.QUANTITY' | translate }}</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of cartService.getCartProducts()">
+                    <!-- img -->
+                    <td class="tp-cart-img">
+                      <a [routerLink]="['/product', item.id]">
+                        <img [src]="item.imgUrl" alt="cart-img" width="70" height="60">
+                      </a>
+                    </td>
+                    <!-- title -->
+                    <td class="tp-cart-title">
+                      <h5 class="m-0">
+                        <a class="roboto-regular" style="font-size: medium;" [routerLink]="['/product', item.id]">{{ item.name }}</a>
+                      </h5>
+                      <p>
+                        {{item.variant}}
+                        <ng-container *ngIf="item.storage">
+                          {{item.storage}}
+                          <br>
+                        </ng-container>
+                      </p>
+                    </td>
+                    <!-- price -->
+                    <td class="tp-cart-price">
+                      <ng-container *ngIf="item.offer">
+                        <span style="text-decoration: line-through;">${{(item.price * item.orderQuantity).toFixed(2)}}</span>
+                        <strong>
+                          <span class="ms-2">${{((item.price - (item.price * (item?.offer?.discount ?? 0)) / 100) * item.orderQuantity).toFixed(2)}}</span>
+                        </strong>
+                      </ng-container>
+
+                      <ng-container *ngIf="!item.offer">
+                        <strong>
+                          ${{ (item.price * item.orderQuantity).toFixed(2) }}
+                        </strong>
+                      </ng-container>
+                      <span class="roboto-regular"> x{{item.orderQuantity}} </span>
+                    </td>
+                    <!-- quantity -->
+                    <td class="tp-cart-quantity">
+                      <div class="tp-product-quantity mt-10 mb-10">
+                        <span class="tp-cart-minus" (click)="cartService.quantityDecrement(item)">
+                          <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M1 1H9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                          </svg>
+                        </span>
+                        <input class="tp-cart-input" type="text" [value]="item.orderQuantity" />
+                        <span class="tp-cart-plus" (click)="cartService.addCartProductFromCart(item)">
+                            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                               <path d="M5 1V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                               <path d="M1 5H9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </span>
+                      </div>
+                    </td>
+                    <!-- action -->
+                    <td class="tp-cart-action">
+                      <a (click)="cartService.removeCartProduct(item)" class="cartmini__del cursor-pointer">
+                        <i class="fa-regular fa-xmark"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="tp-cart-bottom mr-30">
+            <div class="row align-items-start">
+              <div class="col-12">
+                <div class="tp-cart-update text-md-end">
+                  <button (click)="cartService.clear_cart()" type="button" class="roboto-regular tp-logout-btn rounded-3 text-xs-center-original py-2">{{ 'CART.CLEAR_CART' | translate }}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-4 col-md-6">
+          <div class="tp-cart-checkout-wrapper">
+            <div class="tp-cart-checkout-top d-flex align-items-center justify-content-between">
+              <span class="tp-cart-checkout-top-title">{{ 'CART.SUMMARY' | translate }}</span>
+              <span class="tp-cart-checkout-top-price">
+                <!-- ${{(cartService.totalPriceQuantity().total).toFixed(2)}} -->
+              </span>
+            </div>
+            <div class="tp-cart-checkout-shipping">
+              <h4 class="tp-cart-checkout-shipping-title">{{ 'CART.DETAILS' | translate }}</h4>
+              <div class="tp-cart-checkout-shipping-option-wrapper">
+                <div class="cursor-default">
+                  <label>{{ 'CART.SUBTOTAL' | translate }}: <span style="color: #0989FF;">${{cartService.subTotalFull().toFixed(2)}}</span></label>
+                </div>
+                <div class="cursor-default">
+                  <label>{{ 'CART.DISCOUNT' | translate }}: <span style="color: #0989FF;"> ${{cartService.totalDiscount().toFixed(2)}}</span></label>
+                </div>
+              </div>
+            </div>
+            <div class="tp-cart-checkout-total d-flex align-items-center justify-content-between">
+              <span>{{ 'CART.TOTAL' | translate }}</span>
+              <span style="color: #0989FF;">${{(cartService.totalPriceQuantity().total + shipCost).toFixed(2)}}</span>
+            </div>
+            <div class="tp-cart-checkout-proceed">
+              <a routerLink="/checkout" class="roboto-regular tp-save-btn rounded-3 text-xs-center-original w-100 py-2">{{ 'CART.CHECKOUT' | translate }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<app-footer-one></app-footer-one>

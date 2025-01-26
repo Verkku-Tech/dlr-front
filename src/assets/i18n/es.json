@@ -199,5 +199,23 @@
       "outOfStock": "Agotado",
       "seeMore": "Ver más",
       "seeLess": "Ver menos"
+    },
+    "CART": {
+      "EMPTY_CART": "Tu carrito está vacío",
+      "PRODUCT": "Producto",
+      "PRICE": "Precio",
+      "QUANTITY": "Cantidad",
+      "CLEAR_CART": "Vaciar carrito",
+      "SUMMARY": "Resumen",
+      "DETAILS": "Detalles",
+      "SUBTOTAL": "Subtotal",
+      "DISCOUNT": "Descuento",
+      "TOTAL": "Total",
+      "CHECKOUT": "Finalizar compra",
+      "SHOPPING_CART": "Carrito de Compras",
+      "EMPTY_CART_MESSAGE": "Tu carrito está vacío",
+      "EMPTY_CART_IMG_ALT": "Carrito vacío",
+      "SHOP_NOW": "Comprar",
+      "VIEW_CART": "Ver carrito"
     }
 }

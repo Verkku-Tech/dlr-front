@@ -13,7 +13,7 @@
 
                     <div class="tp-collection-content-4">
                         <h1>
-                            <a [routerLink]="['/']">
+                            <a [routerLink]="['/search']">
                                 <span class="roboto-light-title-4">{{ 'featuredProducts.pictures.title' | translate }} <br></span>
                                 <span class="roboto-bold-title-4">{{ 'featuredProducts.pictures.subtitle' | translate }}</span>
                             </a>
@@ -29,16 +29,13 @@
                     <div class="tp-collection-thumb include-bg include-bg transition-3 ms-0 ps-0 rounded-2 h-100 pb-30 cursor-pointer" 
                     [style.background-color]="product.bgColor"
                     [style.background-image]="'url(' + productService.getDefaultImg(product) + ')'"
+                    (click)="goToProduct(product)"
                     style="min-height: 40rem; background-position: center; background-size: cover;">
-
                     </div>
                     
-                    <!-- TODO: Fix the discount  -->
-                    <!-- <div class="badge-new p-1">
-                        @if (product.discount > 0) {
+                    <div class="badge-new p-1">
                         <span class="product-featured roboto-regular fw-light ">{{ 'featuredProducts.pictures.featured' | translate }}</span>
-                        }
-                    </div> -->
+                    </div>
 
                     <div class="product-info" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 30px;">
                         <span class="fs-6 roboto-medium">
