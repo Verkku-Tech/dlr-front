@@ -1,7 +1,7 @@
 <div class="tp-shop-widget-content">
-  <div class="tp-shop-widget-categories">
+  <div class="tp-shop-widget-categories" id="categoryList">
     <ul>
-      <li *ngFor="let category of categoryData">
+      <li *ngFor="let category of categoryData; let i = index">
         <a
           (click)="handleCategoryRoute(category.name)"
           [ngClass]="{
@@ -14,6 +14,7 @@
                 .split(' ')
                 .join('-')
           }"
+          #categoryItem
         >
           {{ 'category.' + category.name | translate }}
           <span>{{ getProductByCategory(category.name) }}</span>

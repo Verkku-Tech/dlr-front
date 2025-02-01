@@ -9,7 +9,7 @@
         </a>
     </li>
     <li *ngFor="let page of paginate.pages">
-        <a href="javascript:void(0)" [ngClass]="{ current: paginate.currentPage == page }" class="bg-secondary" (click)="pageSet(page)">{{page}}</a>
+        <a href="javascript:void(0)" [ngClass]="{ current: paginate.currentPage == page }" class="bg-secondary rounded-5" (click)="pageSet(page)">{{page}}</a>
     </li>
     <li [ngClass]="{ disabled: paginate.currentPage == paginate.totalPages }">
       <a href="javascript:void(0)" class="next page-numbers" (click)="pageSet(paginate.currentPage + 1)" class="bg-secondary">

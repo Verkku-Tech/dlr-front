@@ -23,15 +23,36 @@ export class CategoryFilterComponent implements OnInit{
   activeQuery: string = '';
 
   ngOnInit(): void {
-
     this.route.queryParams.subscribe((queryParams) => {
       this.activeQuery = queryParams['category'];
+      this.sortCategories(); // Sort categories when active query changes
     });
 
     this.categoryService.get()
     .subscribe(categories => {
-      this.categoryData = categories
+      this.categoryData = categories;
+      this.sortCategories(); // Sort categories after initial load
     })
+  }
+
+  private sortCategories(): void {
+    if (!this.activeQuery || !this.categoryData.length) return;
+
+    this.categoryData = [...this.categoryData].sort((a, b) => {
+      const aFormatted = a.name.toLowerCase().replace('&', '').split(' ').join('-');
+      if (aFormatted === this.activeQuery) return -1;
+      const bFormatted = b.name.toLowerCase().replace('&', '').split(' ').join('-');
+      if (bFormatted === this.activeQuery) return 1;
+      return 0;
+    });
+
+    // Reset scroll position
+    setTimeout(() => {
+      const categoryList = document.getElementById('categoryList');
+      if (categoryList) {
+        categoryList.scrollTop = 0;
+      }
+    });
   }
 
   handleCategoryRoute(value: string): void {
