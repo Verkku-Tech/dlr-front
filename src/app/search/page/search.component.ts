@@ -57,7 +57,7 @@ export class SearchComponent implements OnInit, OnDestroy, AfterViewInit {
   public status: string | null = null;
   public brand: string | null = null;
   public pageNo: number = 1;
-  public pageSize: number = 9;
+  public pageSize: number = 6;
   public paginate: any = {}; // Pagination use only
   public sortBy: string = 'asc'; // Default sorting
   public mobileSidebar: boolean = false;
@@ -219,22 +219,42 @@ export class SearchComponent implements OnInit, OnDestroy, AfterViewInit {
         this.filteredProducts.sort((a, b) => b.id.localeCompare(a.id));
         break;
       case 'low':
-        this.filteredProducts.sort((a, b) => this.productService.getDefaultPrice(a) - this.productService.getDefaultPrice(b));
+        this.filteredProducts.sort((a, b) => {
+          const aRange = this.productService.getProductPriceRange(a);
+          const bRange = this.productService.getProductPriceRange(b);
+          return aRange.min - bRange.min;
+        });
         break;
       case 'high':
-        this.filteredProducts.sort((a, b) => this.productService.getDefaultPrice(b) - this.productService.getDefaultPrice(a));
+        this.filteredProducts.sort((a, b) => {
+          const aRange = this.productService.getProductPriceRange(a);
+          const bRange = this.productService.getProductPriceRange(b);
+          return bRange.max - aRange.max;
+        });
         break;
-      // case 'on-sale':
-      //   this.products.sort((a, b) => this.productService.getDefaultPrice(b) - this.productService.getDefaultPrice(a));
-      //   break;
+      case 'on-sale':
+        this.filteredProducts.sort((a, b) => {
+          const aHasOffer = a.productVariants.some(v => v.offer);
+          const bHasOffer = b.productVariants.some(v => v.offer);
+          
+          if (aHasOffer && !bHasOffer) return -1;
+          if (!aHasOffer && bHasOffer) return 1;
+          if (aHasOffer && bHasOffer) {
+            const aRange = this.productService.getProductPriceRange(a);
+            const bRange = this.productService.getProductPriceRange(b);
+            return aRange.min - bRange.min;
+          }
+          return 0;
+        });
+        break;
       case 'category':
         this.filteredProducts.sort((a, b) => {
           return a.category.localeCompare(b.category);
         });
         break;
-      // case 'new':
-      //   this.products.sort((a, b) => (a.isNew === b.isNew ? 0 : a.isNew ? -1 : 1));
-      //   break;
+      case 'new':
+        this.filteredProducts.sort((a, b) => (a.featured === b.featured ? 0 : a.featured ? -1 : 1));
+        break;
       default:
         this.filteredProducts.sort((a, b) => a.id.localeCompare(b.id));
         break;

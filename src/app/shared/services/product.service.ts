@@ -73,7 +73,7 @@ export class ProductService {
     this.selectedVariant = variant
     this.selectedStorage = undefined 
 
-    if(variant.storageOptions.length > 0){
+    if(variant?.storageOptions?.length > 0){
       this.selectedStorage = variant.storageOptions[0]
     }
     this.activeImg = variant.imgUrl;
@@ -140,6 +140,21 @@ export class ProductService {
       startIndex: startIndex,
       endIndex: endIndex,
       pages: pages
+    };
+  }
+
+  getProductPriceRange({ productVariants }: IProduct): { min: number; max: number } {
+    const originalPrices = productVariants.map(variant => variant.price);
+    const discountedPrices = productVariants
+      .filter(variant => variant.offer)
+      .map(variant => variant.price - (variant.price * variant.offer?.discount! / 100));
+    
+    const minOriginalPrice = Math.min(...originalPrices);
+    const minDiscountedPrice = discountedPrices.length > 0 ? Math.min(...discountedPrices) : Infinity;
+
+    return {
+      min: Math.min(minOriginalPrice, minDiscountedPrice),
+      max: Math.max(...originalPrices)
     };
   }
 

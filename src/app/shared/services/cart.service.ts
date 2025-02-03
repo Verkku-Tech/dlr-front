@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { TranslateService } from '@ngx-translate/core';
 import { IProduct, IProductCart, ProductVariant, StorageOption } from '../interfaces/product.interface';
 import { ProductService } from './product.service';
 
@@ -16,7 +17,8 @@ export class CartService {
 
   constructor(
     private toastrService: ToastrService,
-    private productService: ProductService
+    private productService: ProductService,
+    private translateService: TranslateService
   ) { }
 
   public getCartProducts(): IProductCart[] {
@@ -47,8 +49,15 @@ export class CartService {
     showMsg: boolean | null = true
   ) {
 
-    if (!productVariant || !storageOption) {
-      console.error('You must select a product variant and the storage')
+    if (!productVariant) {
+      console.error('You must select a product variant')
+      return
+    }
+
+    // Only require storage selection for smartphones/mobile devices
+    const isSmartphone = payload.category === 'SmartPhones' || payload.category === 'Mobile Devices'
+    if(isSmartphone && !storageOption) {
+      console.error('You must select a storage option for smartphones')
       return
     }
 
@@ -65,27 +74,30 @@ export class CartService {
       imgUrl: productVariant.imgUrl,
       price: storageOption?.price ?? productVariant.price,
       sku: productVariant.sku,
-      storage: storageOption.storage,
+      storage: isSmartphone ? storageOption?.storage : undefined,
       offer: productVariant.offer
     }
 
-    const exists: IProductCart | undefined = state.cart_products.find((i: IProductCart) => i.id === payload.id && i.sku === productVariant.sku);
+    const exists: IProductCart | undefined = state.cart_products.find((i: IProductCart) => 
+      i.id === payload.id && 
+      i.sku === productVariant.sku &&
+      (!isSmartphone || i.storage === storageOption?.storage)
+    );
 
     if (exists) {
-
-      if (exists.storage && exists.storage == storageOption.storage) {
-        exists.orderQuantity += orderQuantity
-      }
-      else {
-        state.cart_products.push(item);
-      }
+      exists.orderQuantity += orderQuantity;
     }
     else {
       state.cart_products.push(item);
     }
 
-    if (showMsg)
-      this.toastrService.success(`${payload.name} added to cart`);
+    if (showMsg) {
+      this.translateService
+        .get('CART.ADDED_TO_CART', { product: payload.name })
+        .subscribe((msg: string) => {
+          this.toastrService.success(msg);
+        });
+    }
     localStorage.setItem("cart_products", JSON.stringify(state.cart_products));
 
   };
@@ -162,7 +174,11 @@ export class CartService {
         }
         return { ...item };
       });
-      this.toastrService.info(`Decrement Quantity For ${payload.name}`);
+      this.translateService
+        .get('CART.QUANTITY_DECREASED', { product: payload.name })
+        .subscribe((msg: string) => {
+          this.toastrService.info(msg);
+        });
     }
     localStorage.setItem("cart_products", JSON.stringify(state.cart_products));
   };
@@ -180,7 +196,11 @@ export class CartService {
       }
     );
 
-    this.toastrService.error(`${payload.name} removed from cart`);
+    this.translateService
+      .get('CART.REMOVED_FROM_CART', { product: payload.name })
+      .subscribe((msg: string) => {
+        this.toastrService.error(msg);
+      });
     localStorage.setItem("cart_products", JSON.stringify(state.cart_products));
   };
 

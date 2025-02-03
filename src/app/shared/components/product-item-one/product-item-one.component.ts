@@ -43,15 +43,25 @@ export class ProductItemOneComponent {
     return product.featured
   }
   productWithOffer(product: IProduct){
-    return Math.max(...[...product.productVariants]
+    const discounts = product.productVariants
       .filter(e => e.offer)
-      .map(e => e.offer?.discount || 0)).toFixed()
+      .map(e => e.offer?.discount || 0);
+    
+    if (discounts.length === 0) {
+      return 0;
+    }
+    
+    return Math.max(...discounts).toFixed();
   }
 
 
   openQuickView(product: IProduct){
     this.utilsService.handleOpenModal(product.id, product)
     this.utilsService.isProductModalOpen
+  }
+
+  getPriceRange() {
+    return this.productService.getProductPriceRange(this.product);
   }
 }
 
