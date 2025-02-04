@@ -7,13 +7,13 @@
 
     <!-- product badge --> 
     <div class="badge-new">
-      @if (productWithOffer(product)) {
-        <span class="theme-bg-primary roboto-regular fw-light ">{{productWithOffer(product)}}% {{ 'newProducts.discount' | translate }}</span>
+      @if (product.featured) {
+        <span class="bg-primary roboto-regular-italic text-uppercase">{{ 'newProducts.new' | translate }}</span>
         <br>
       }
       
-      @if (product.featured) {
-        <span class="bg-primary roboto-regular-italic text-uppercase">{{ 'newProducts.new' | translate }}</span>
+      @if (productWithOffer(product)) {
+        <span class="theme-bg-primary roboto-regular fw-light">{{productWithOffer(product)}}%</span>
       }
       
     </div>
@@ -95,20 +95,13 @@
       </div>
     </div>
     <div class="tp-product-price-wrapper">
-      <!-- TODO: fix pricing -->
-      <!-- <ng-container *ngIf="product.discount > 0; else noDiscount">
-        <span class="tp-product-price new-price tp-product-price new-price th-bg-light-silver py-1 px-1">
-            <small class="roboto-thin small text-dark">
-              Desde
-            </small>
-          ${{ (product.price - (product.price * product.discount / 100)).toFixed(2) }}
-        </span>
-        <span class="tp-product-price old-price tp-product-price new-price ms-1">${{ product.price }}</span>
-      </ng-container> -->
-
-      <!-- <ng-template #noDiscount> -->
-          <span class="tp-product-price new-price th-bg-light-silver p-1">${{ productService.getDefaultPrice(product).toFixed(2) }}</span>
-      <!-- </ng-template> -->
+      <span class="tp-product-price new-price th-bg-light-silver p-1">
+        @if (getPriceRange().min === getPriceRange().max) {
+          ${{ getPriceRange().min.toFixed(2) }}
+        } @else {
+          ${{ getPriceRange().min.toFixed(2) }} - ${{ getPriceRange().max.toFixed(2) }}
+        }
+      </span>
     </div>
 
   </div>

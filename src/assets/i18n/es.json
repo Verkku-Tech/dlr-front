@@ -9,7 +9,8 @@
       "SmartWatches": "Smart Watches",
       "Tablets": "Tablets",
       "Speakers": "Cornetas",
-      "Headphones": "Audífonos"
+      "Headphones": "Audífonos",
+      "Computer Equipment": "Equipos de Computación"
     },
     "checkout": {
       "BillingDetails": "Detalles de Facturación",
@@ -216,6 +217,9 @@
       "EMPTY_CART_MESSAGE": "Tu carrito está vacío",
       "EMPTY_CART_IMG_ALT": "Carrito vacío",
       "SHOP_NOW": "Comprar",
-      "VIEW_CART": "Ver carrito"
+      "VIEW_CART": "Ver carrito",
+      "ADDED_TO_CART": "{{product}} agregado al carrito",
+      "REMOVED_FROM_CART": "{{product}} eliminado del carrito",
+      "QUANTITY_DECREASED": "Cantidad disminuida para {{product}}"
     }
 }

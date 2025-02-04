@@ -9,7 +9,10 @@
         max-height: 80%;
     }
 }
-
 .product-img:hover {
     transform: scale(1.1); // Changed to single value to scale both X and Y equally
+}
+.active {
+    border:  1px solid var(--tp-theme-primary);
+    border-radius: 10%;
 }

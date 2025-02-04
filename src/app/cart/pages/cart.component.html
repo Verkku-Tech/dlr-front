@@ -44,10 +44,10 @@
                     </td>
                     <!-- price -->
                     <td class="tp-cart-price">
-                      <ng-container *ngIf="item.offer">
-                        <span style="text-decoration: line-through;">${{(item.price * item.orderQuantity).toFixed(2)}}</span>
+                      <ng-container *ngIf="item.offer !== undefined">
+                        <strong style="text-decoration: line-through;">${{(item.price * item.orderQuantity).toFixed(2)}}</strong>
                         <strong>
-                          <span class="ms-2">${{((item.price - (item.price * (item?.offer?.discount ?? 0)) / 100) * item.orderQuantity).toFixed(2)}}</span>
+                          <strong class="ms-2">${{((item.price - (item.price * (item?.offer?.discount ?? 0)) / 100) * item.orderQuantity).toFixed(2)}}</strong>
                         </strong>
                       </ng-container>
 

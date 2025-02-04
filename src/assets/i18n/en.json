@@ -10,7 +10,8 @@
       "Wallets": "Wallets",
       "Tablets": "Tablets",
       "Speakers": "Speakers",
-      "Headphones": "Headphones"
+      "Headphones": "Headphones",
+      "Computer Equipment": "Computer Equipment"
     },
     "checkout": {
       "BillingDetails": "Billing Details",
@@ -212,7 +213,10 @@
       "SHOPPING_CART": "Shopping Cart",
       "EMPTY_CART_MESSAGE": "Your cart is empty",
       "EMPTY_CART_IMG_ALT": "Empty cart",
-      "VIEW_CART": "View Cart"
+      "VIEW_CART": "View Cart",
+      "ADDED_TO_CART": "{{product}} added to cart",
+      "REMOVED_FROM_CART": "{{product}} removed from cart",
+      "QUANTITY_DECREASED": "Decreased quantity for {{product}}"
     }
 }
 
