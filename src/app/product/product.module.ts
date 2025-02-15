@@ -6,11 +6,13 @@ import { SharedModule } from '../shared/shared.module';
 import { ProductComponent } from './page/product/product.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { ProductDetailsTabNavComponent } from './components/product-details-tab-nav/product-details-tab-nav.component';
 
 
 @NgModule({
   declarations: [
-    ProductComponent
+    ProductComponent,
+    ProductDetailsTabNavComponent
   ],
   imports: [
     CommonModule,
