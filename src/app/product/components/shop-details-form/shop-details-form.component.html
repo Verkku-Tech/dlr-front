@@ -1,0 +1,59 @@
+<form [formGroup]="shopReviewForm" (ngSubmit)="onSubmit()">
+  <div class="tp-product-details-review-form-rating d-flex align-items-center">
+     <p>{{ 'shop_details.labels.your_rating' | translate }}</p>
+     <div class="tp-product-details-review-form-rating-icon d-flex align-items-center">
+        <span><i class="fa-solid fa-star"></i></span>
+        <span><i class="fa-solid fa-star"></i></span>
+        <span><i class="fa-solid fa-star"></i></span>
+        <span><i class="fa-solid fa-star"></i></span>
+        <span><i class="fa-solid fa-star"></i></span>
+     </div>
+  </div>
+  <div class="tp-product-details-review-input-wrapper">
+
+     <div class="tp-product-details-review-input-box">
+        <div class="tp-product-details-review-input">
+           <textarea id="review" name="review" [placeholder]="'shop_details.review_placeholder' | translate" formControlName="review" class="rounded-input"></textarea>
+        </div>
+        <div class="tp-product-details-review-input-title">
+           <label for="msg">{{ 'shop_details.labels.review' | translate }} *</label>
+        </div>
+        <span *ngIf="review?.hasError('required') && (review?.touched || formSubmitted)" class="text-danger">
+         {{ 'shop_details.validation.review_required' | translate }}
+        </span>
+     </div>
+
+     <div class="tp-product-details-review-input-box">
+        <div class="tp-product-details-review-input">
+           <input name="name" id="name" type="text" [placeholder]="'shop_details.name_placeholder' | translate" formControlName="name" class="rounded-input">
+        </div>
+        <div class="tp-product-details-review-input-title">
+           <label for="name">{{ 'shop_details.labels.name' | translate }} *</label>
+        </div>
+        <span *ngIf="name?.hasError('required') && (name?.touched || formSubmitted)" class="text-danger">
+         {{ 'shop_details.validation.name_required' | translate }}
+        </span>
+     </div>
+     <div class="tp-product-details-review-input-box">
+        <div class="tp-product-details-review-input">
+           <input name="email" id="email" type="email" [placeholder]="'shop_details.email_placeholder' | translate" formControlName="email" class="rounded-input">
+        </div>
+        <div class="tp-product-details-review-input-title">
+           <label for="email">{{ 'shop_details.labels.email' | translate }}</label>
+        </div>
+        <span *ngIf="email?.hasError('required') && (email?.touched || formSubmitted)" class="text-danger">
+         {{ 'shop_details.validation.email_required' | translate }}
+        </span>
+     </div>
+  </div>
+
+  <div class="tp-product-details-review-suggetions mb-20">
+     <div class="tp-product-details-review-remeber">
+        <input id="remeber" type="checkbox">
+        <label for="remeber">{{ 'shop_details.labels.save_browser_info' | translate }}</label>
+     </div>
+  </div>
+  <div class="tp-product-details-review-btn-wrapper">
+     <button type="submit" class="roboto-regular tp-save-btn rounded-3 text-xs-center-original px-5 py-2">{{ 'shop_details.buttons.submit' | translate }}</button>
+  </div>
+</form>

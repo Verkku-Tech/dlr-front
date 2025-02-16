@@ -199,7 +199,14 @@
       "inStock": "Disponible",
       "outOfStock": "Agotado",
       "seeMore": "Ver más",
-      "seeLess": "Ver menos"
+      "seeLess": "Ver menos",
+      "quantity": "Cantidad",
+      "buyNow": "Comprar Ahora",
+      "category": "Categoría",
+      "tags": "Etiquetas",
+      "returns": "30 días de devolución fácil",
+      "sameDay": "Haz tu pedido antes de las 2:30 pm para envío el mismo día",
+      "storage": "Almacenamiento"
     },
     "CART": {
       "EMPTY_CART": "Tu carrito está vacío",
@@ -221,5 +228,35 @@
       "ADDED_TO_CART": "{{product}} agregado al carrito",
       "REMOVED_FROM_CART": "{{product}} eliminado del carrito",
       "QUANTITY_DECREASED": "Cantidad disminuida para {{product}}"
+    },
+    "shop_details": {
+      "review_placeholder": "Escribe tu reseña aquí...",
+      "name_placeholder": "Nombre completo",
+      "email_placeholder": "correo@ejemplo.com",
+      "labels": {
+        "review": "Tu reseña",
+        "name": "Tu nombre",
+        "email": "Tu correo electrónico",
+        "your_rating": "Tu Calificación",
+        "save_browser_info": "Guardar mi nombre, correo electrónico y sitio web en este navegador para la próxima vez que comente"
+      },
+      "validation": {
+        "review_required": "Por favor escribe tu reseña",
+        "name_required": "Por favor ingresa tu nombre",
+        "email_required": "Por favor ingresa tu correo electrónico",
+        "email_invalid": "Por favor ingresa un correo electrónico válido"
+      },
+      "buttons": {
+        "submit": "Guardar"
+      },
+      "tabs": {
+        "description": "Descripción",
+        "additional_information": "Información adicional",
+        "reviews": "Reseñas ({{count}})"
+      },
+      "customer_reviews": "Reseñas de clientes",
+      "rating_and_review": "Calificación y Reseñas",
+      "review_this_product": "Reseña este producto",
+      "email_not_published": "Tu correo electrónico no será publicado. Los campos requeridos están marcados con *"
     }
 }

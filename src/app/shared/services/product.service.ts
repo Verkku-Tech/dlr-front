@@ -36,6 +36,32 @@ export class ProductService {
   defaultProductRating: string | undefined
   selectedVariant: ProductVariant | undefined
   selectedStorage: StorageOption | undefined
+
+  calculateRatingStats(product: IProduct) {
+    const totalReviews = product.reviews.length;
+    if (totalReviews === 0) {
+      return {
+        avgRating: 0,
+        starPercentages: new Array(5).fill(0)
+      };
+    }
+
+    const avgRating = product.reviews.reduce((sum, review) => sum + review.rating, 0) / totalReviews;
+
+    const starCounts = new Array(5).fill(0);
+    product.reviews.forEach(review => {
+      starCounts[review.rating - 1]++;
+    });
+
+    const starPercentages = starCounts.map(count => 
+      Math.round((count / totalReviews) * 100)
+    );
+
+    return {
+      avgRating: Number(avgRating.toFixed(1)),
+      starPercentages: starPercentages.reverse() 
+    };
+  }
   
   getStarRating(i: number, product: IProduct){
     return i <= product.reviews.reduce((avg, review) => avg + review.rating, 0) / product.reviews.length ? '#ffa800' : '#ccc'
