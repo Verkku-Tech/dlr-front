@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 import { IProduct, IProductCart, ProductVariant, StorageOption } from '../interfaces/product.interface';
-import { ProductService } from './product.service';
 
 const state = {
   cart_products: JSON.parse(localStorage['cart_products'] || '[]')
@@ -17,7 +16,6 @@ export class CartService {
 
   constructor(
     private toastrService: ToastrService,
-    private productService: ProductService,
     private translateService: TranslateService
   ) { }
 
@@ -30,6 +28,7 @@ export class CartService {
   }
 
   addCartProductFromCart(item: IProductCart) {
+
     const exists = state.cart_products.find((i: IProductCart) => 
       i.id === item.id && 
       i.sku === item.sku &&
@@ -40,7 +39,6 @@ export class CartService {
       localStorage.setItem("cart_products", JSON.stringify(state.cart_products));
     }
   }
-  // add_cart_product
   addCartProduct(
     payload: IProduct,
     productVariant: ProductVariant | undefined,
@@ -67,7 +65,7 @@ export class CartService {
     // }
 
     const item: IProductCart = {
-      id: payload.id,
+      id: payload._id,
       name: payload.name,
       variant: productVariant.name,
       orderQuantity,

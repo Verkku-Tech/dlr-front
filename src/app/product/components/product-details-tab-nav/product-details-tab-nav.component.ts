@@ -1,6 +1,7 @@
 import { Component,ElementRef,Renderer2,ViewChild,Input } from '@angular/core';
 import { IProduct } from '../../../shared/interfaces/product.interface';
 import { ProductService } from '../../../shared/services/product.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-product-details-tab-nav',
@@ -8,26 +9,11 @@ import { ProductService } from '../../../shared/services/product.service';
   styleUrls: ['./product-details-tab-nav.component.scss']
 })
 export class ProductDetailsTabNavComponent {
-  @ViewChild('navActive') navActive!: ElementRef;
-  @ViewChild('productTabMarker') productTabMarker!: ElementRef;
-
   @Input () product! : IProduct;
 
-  constructor(private renderer: Renderer2, public productService: ProductService) {}
-
-  handleActiveMarker(event: Event): void {
-
-    const marker = document.getElementById("productTabMarker");
-    if (marker && event.target) {
-      marker.style.left = (event.target as HTMLButtonElement).offsetLeft + "px";
-      marker.style.width = (event.target as HTMLButtonElement).offsetWidth + "px";
-    }
+  constructor(
+    public productService: ProductService
+  ) {
   }
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.renderer.setStyle(this.productTabMarker.nativeElement, 'left', this.navActive.nativeElement.offsetLeft + 'px');
-      this.renderer.setStyle(this.productTabMarker.nativeElement, 'width', this.navActive.nativeElement.offsetWidth + 'px');
-    }, 0);
-  }
 }

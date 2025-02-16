@@ -7,19 +7,25 @@ import { ProductComponent } from './page/product/product.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ProductDetailsTabNavComponent } from './components/product-details-tab-nav/product-details-tab-nav.component';
+import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProductDetailsRatingItemComponent } from './components/product-details-rating-item/product-details-rating-item.component';
+import { ShopDetailsFormComponent } from './components/shop-details-form/shop-details-form.component';
 
 
 @NgModule({
   declarations: [
     ProductComponent,
-    ProductDetailsTabNavComponent
+    ProductDetailsTabNavComponent,
+    ProductDetailsRatingItemComponent,
+    ShopDetailsFormComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     ProductRoutingModule,
     TranslateModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NgbNavModule
   ]
 })
 export class ProductModule { }

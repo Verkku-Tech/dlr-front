@@ -3,8 +3,8 @@
   <ngx-spinner template="<img src='assets/img/Logo_SVG/DLR Tech-Imagotipo Principal-Espacios Oscuros-RGB.svg'/ width='100px'>"></ngx-spinner>
 }
 @else {
-  <app-breadcrumb [subtitle]="product.category" top_spacing="pt-0" bot_spacing="pb-10"></app-breadcrumb>
-  <section class="tp-product-details-area">
+  
+  <section class="tp-product-details-area mt-40">
     <div class="tp-product-details-top pb-115">
       <div class="container">
         <div class="row">
@@ -22,11 +22,6 @@
               <div class="tab-content m-img" id="productDetailsNavContent">
                 <div class="tp-product-details-nav-main-thumb" style="background-color: #f5f6f8">
                   <img [src]="productService.activeImg" alt="prd-image" />
-                  <!-- <div *ngIf="product.videoId" class="tp-product-details-thumb-video">
-                                <a (click)="utilsService.playVideo('B0WuqoXkJkY')" class="tp-product-details-thumb-video-btn cursor-pointer popup-video">
-                                  <i class="fas fa-play"></i>
-                                </a>
-                              </div> -->
                 </div>
               </div>
             </div>
@@ -65,8 +60,8 @@
             </div>
             <p>
               {{ textMore ? product.description : (product.description.substring(0, 100) + '...') }}
-              <span class="link" (click)="handleTextToggle()" style="cursor: pointer;">{{ textMore ? ('product.seeMore' |
-                translate) : ('product.seeLess' | translate) }}</span>
+              <span class="link" (click)="handleTextToggle()" style="cursor: pointer;">{{ textMore ? ('product.seeLess' |
+                translate) : ('product.seeMore' | translate) }}</span>
             </p>
             <!-- price -->
             <div class="tp-product-details-price-wrapper mb-20">
@@ -99,22 +94,26 @@
                   </span>
                 </div>
                 <!-- Storage -->
-                <h4 class="tp-product-details-variation-title">Storage:</h4>
-                <div class="tp-product-details-variation-list d-flex flex-row">
-                  <button *ngFor="let item of productService.selectedVariant?.storageOptions; let i = index"
-                    [class.activeStorage]="item.storage == productService.selectedStorage?.storage"
-                    (click)="productService.handleSelectedStorage(item)" type="button"
-                    class="btn rounded w-auto me-2 d-flex align-items-center justify-content-center">
-                    <span
-                      [ngClass]="productService.selectedStorage?.storage == item.storage ? 'text-light' : 'text-dark'">{{item.storage}}</span>
-                  </button>
-                </div>
+                 
+        <ng-container *ngIf="productService.selectedVariant?.storageOptions !== undefined">
+          <h4 class="tp-product-details-variation-title">Storage:</h4>
+          <div class="tp-product-details-variation-list d-flex flex-row">
+            <button *ngFor="let item of productService.selectedVariant?.storageOptions; let i = index"
+              [class.activeStorage]="item.storage == productService.selectedStorage?.storage"
+              (click)="productService.handleSelectedStorage(item)" type="button"
+              class="btn rounded w-auto me-2 d-flex align-items-center justify-content-center">
+              <span
+                [ngClass]="productService.selectedStorage?.storage == item.storage ? 'text-light' : 'text-dark'">{{item.storage}}</span>
+            </button>
+          </div>
+        </ng-container>
   
               </div>
             </div>
+
             <!-- actions -->
             <div class="tp-product-details-action-wrapper">
-              <h3 class="tp-product-details-action-title">Quantity</h3>
+              <h3 class="tp-product-details-action-title">{{'product.quantity' | translate}}</h3>
               <div class="tp-product-details-action-item-wrapper d-flex align-items-center">
                 <div class="tp-product-details-quantity">
                   <div class="tp-product-quantity mb-15 mr-15">
@@ -138,23 +137,22 @@
                 <div class="tp-product-details-add-to-cart mb-15 w-100">
                   <button
                     (click)="cartService.addCartProduct(product, productService.selectedVariant, productService.selectedStorage, cartService.orderQuantity)"
-                    class="roboto-regular tp-logout-btn rounded-3 text-xs-center-original w-100 py-2 w-100 ">Agregar al
-                    Carrito</button>
+                    class="roboto-regular tp-logout-btn rounded-3 text-xs-center-original w-100 py-2 w-100 ">{{'cart.add' | translate}}</button>
                 </div>
               </div>
               <a (click)="cartService.addCartProduct(product, productService.selectedVariant, productService.selectedStorage, cartService.orderQuantity, false)"
                 [routerLink]="['/checkout']"
-                class="roboto-regular tp-save-btn rounded-3 text-xs-center-original w-100 py-2">Comprar Ahora</a>
+                class="roboto-regular tp-save-btn rounded-3 text-xs-center-original w-100 py-2">{{'product.buyNow' | translate}}</a>
             </div>
             <div>
               <div class="tp-product-details-action-sm">
                 <div class="tp-product-details-query">
                   <div class="tp-product-details-query-item d-flex align-items-center">
-                    <span>Category: </span>
+                    <span>{{'product.category' | translate}}: </span>
                     <p>{{product.category}}</p>
                   </div>
                   <div class="tp-product-details-query-item d-flex align-items-center">
-                    <span>Tags: </span>
+                    <span>{{'product.tags' | translate}}: </span>
                     <p>
                       {{ product.tags | formatTags }}
                     </p>
@@ -165,8 +163,8 @@
               <div>
                 <div class="tp-product-details-msg mb-15">
                   <ul>
-                    <li>30 days easy returns</li>
-                    <li>Order yours before 2.30pm for same day dispatch</li>
+                    <li>{{'product.returns' | translate}}</li>
+                    <li>{{'product.sameDay' | translate}}</li>
                   </ul>
                 </div>
               </div>

@@ -217,6 +217,45 @@
       "ADDED_TO_CART": "{{product}} added to cart",
       "REMOVED_FROM_CART": "{{product}} removed from cart",
       "QUANTITY_DECREASED": "Decreased quantity for {{product}}"
+    },
+    "shop_details": {
+      "review_placeholder": "Write your review here...",
+      "name_placeholder": "Shahnewaz Sakil",
+      "email_placeholder": "shofy@mail.com",
+      "labels": {
+        "review": "Your review",
+        "name": "Your name",
+        "email": "Your email",
+        "your_rating": "Your Rating",
+        "save_browser_info": "Save my name, email, and website in this browser for the next time I comment"
+      },
+      "validation": {
+        "review_required": "Please write your review",
+        "name_required": "Please enter your name",
+        "email_required": "Please enter your email",
+        "email_invalid": "Please enter a valid email"
+      },
+      "buttons": {
+        "submit": "Submit"
+      },
+      "tabs": {
+        "description": "Description",
+        "additional_information": "Additional information",
+        "reviews": "Reviews ({{count}})"
+      },
+      "customer_reviews": "Customer reviews",
+      "rating_and_review": "Rating & Review",
+      "review_this_product": "Review this product",
+      "email_not_published": "Your email address will not be published. Required fields are marked *"
+    },
+    "product": {
+      "quantity": "Quantity",
+      "buyNow": "Buy Now",
+      "category": "Category",
+      "tags": "Tags",
+      "returns": "30 days easy returns",
+      "sameDay": "Order yours before 2.30pm for same day dispatch",
+      "storage": "Storage"
     }
 }
 
